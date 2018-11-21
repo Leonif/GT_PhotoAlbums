@@ -17,12 +17,8 @@ class LoginInteractorImpl: LoginInteractor {
     var provider: BackendInterface!
     
     func login(completion: @escaping (BackendResult<Void>) -> Void) {
-//        provider.login { (result) in
-//            completion(result)
-//        }
+        provider.login { (result) in
+            completion(result)
+        }
     }
-    
-    
-    
-    
 }

@@ -11,13 +11,10 @@ import Foundation
 
 typealias BackendResult<T> = ResultType<T, BackendError>
 
-
 enum BackendError: Error {
     case loginError(String)
-    case syncError(String)
-    case dataIsNotFound(String)
 }
 
 protocol BackendInterface {
-    func login(callback: (BackendResult<Void>) -> Void)
+    func login(callback: @escaping (BackendResult<Void>) -> Void)
 }

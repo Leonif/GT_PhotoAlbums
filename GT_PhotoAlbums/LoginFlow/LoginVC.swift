@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import FacebookLogin
+
 
 protocol LoginView: BaseView {
 }
@@ -17,17 +17,12 @@ class LoginVC: UIViewController, LoginView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let loginButton = LoginButton(readPermissions: [ .publicProfile ])
-        loginButton.center = view.center
-        
-        view.addSubview(loginButton)
-        
-        
         self.view.backgroundColor = .red
-        
-        
-//        presenter.login()
     }
+
     func close() { }
 
+    @IBAction func facebookLoginTapped(_ sender: Any) {
+        presenter.login()
+    }
 }

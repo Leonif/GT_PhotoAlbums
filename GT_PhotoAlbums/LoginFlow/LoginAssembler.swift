@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import FacebookLogin
 
 class LoginAssembler {
     
@@ -15,8 +15,11 @@ class LoginAssembler {
         let view = LoginVC.initFromStoryboard()
         let presenter = LoginPresenterImpl()
         view.presenter = presenter
+        presenter.view = view
         
-        let provider = FacebookApi()
+        let manager = LoginManager()
+        
+        let provider = FacebookApi(manager: manager)
         let interactor = LoginInteractorImpl()
         interactor.provider = provider
         
@@ -26,11 +29,4 @@ class LoginAssembler {
         
         return view
     }
-    
 }
-
-
-
-
-
-

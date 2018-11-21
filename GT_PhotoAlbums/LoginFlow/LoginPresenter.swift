@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 protocol LoginPresenter {
     func login()
 }
@@ -23,6 +22,8 @@ class LoginPresenterImpl: LoginPresenter {
             switch result {
             case .success:
                 self?.router.showShopList()
+            case let .failure(.loginError(message)):
+                self?.view.onError(with: message)
             case let .failure(error):
                 self?.view.onError(with: error.localizedDescription)
             }

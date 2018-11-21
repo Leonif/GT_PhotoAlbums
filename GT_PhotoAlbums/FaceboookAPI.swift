@@ -7,9 +7,25 @@
 //
 
 import Foundation
+import FacebookLogin
 
 class FacebookApi: BackendInterface {
-    func login(callback: (BackendResult<Void>) -> Void) {
-        callback(ResultType.success(()))
+    var manager: LoginManager!
+    
+    init(manager: LoginManager) {
+        self.manager = manager
+    }
+    
+    func login(callback: @escaping (BackendResult<Void>) -> Void) {
+        self.manager.logIn(readPermissions: [.publicProfile], viewController: nil) { (result) in
+            switch result {
+            case .failed(let error):
+                callback(ResultType.failure(.loginError(error.localizedDescription)))
+            case .cancelled:
+                callback(ResultType.failure(.loginError("user cancel enter")))
+            case .success(let grantedPermissions, let declinedPermissions, let accessToken):
+                callback(ResultType.success(()))
+            }
+        }
     }
 }

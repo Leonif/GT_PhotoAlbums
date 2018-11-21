@@ -17,7 +17,27 @@
                     <view key="view" contentMode="scaleToFill" id="ebA-XZ-A3a">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8lA-2T-bhQ">
+                                <rect key="frame" x="16" y="601" width="343" height="50"/>
+                                <color key="backgroundColor" red="0.2901960784" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="5Oy-ma-CZU"/>
+                                </constraints>
+                                <state key="normal" title="Facebook Login">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="facebookLoginTapped:" destination="MAT-HL-uyP" eventType="touchUpInside" id="vzr-JL-z1v"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="pf3-Z1-bJh" firstAttribute="trailing" secondItem="8lA-2T-bhQ" secondAttribute="trailing" constant="16" id="Ntd-tC-1At"/>
+                            <constraint firstItem="8lA-2T-bhQ" firstAttribute="leading" secondItem="pf3-Z1-bJh" secondAttribute="leading" constant="16" id="Sue-LF-bp7"/>
+                            <constraint firstItem="pf3-Z1-bJh" firstAttribute="bottom" secondItem="8lA-2T-bhQ" secondAttribute="bottom" constant="16" id="tF0-a6-xKi"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="pf3-Z1-bJh"/>
                     </view>
                 </viewController>

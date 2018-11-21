@@ -21,11 +21,11 @@ class LoginPresenterImpl: LoginPresenter {
         interactor.login { [weak self] (result) in
             switch result {
             case .success:
-                self?.router.showShopList()
+                self?.router.showAlbums()
             case let .failure(.loginError(message)):
                 self?.view.onError(with: message)
-            case let .failure(error):
-                self?.view.onError(with: error.localizedDescription)
+//            case let .failure(error):
+//                self?.view.onError(with: error.localizedDescription)
             }
         }
     }

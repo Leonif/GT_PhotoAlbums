@@ -26,9 +26,12 @@
 		79CF50C121A5D9500039096D /* UIStoryboard+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CF50C021A5D9500039096D /* UIStoryboard+Identifiable.swift */; };
 		79CF50C321A5D9D40039096D /* LoginVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79CF50C221A5D9D40039096D /* LoginVC.storyboard */; };
 		79CF50C521A5DAAC0039096D /* FaceboookAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CF50C421A5DAAC0039096D /* FaceboookAPI.swift */; };
+		B0BC3CFA76F24BFEA4D8F27A /* Pods_GT_PhotoAlbums.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 557B1957C433ED9A65681DA5 /* Pods_GT_PhotoAlbums.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		552B9B9D7CB2BF108D85E816 /* Pods-GT_PhotoAlbums.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GT_PhotoAlbums.release.xcconfig"; path = "Target Support Files/Pods-GT_PhotoAlbums/Pods-GT_PhotoAlbums.release.xcconfig"; sourceTree = "<group>"; };
+		557B1957C433ED9A65681DA5 /* Pods_GT_PhotoAlbums.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GT_PhotoAlbums.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		79CF506921A5D1F30039096D /* GT_PhotoAlbums.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GT_PhotoAlbums.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79CF506C21A5D1F30039096D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79CF507121A5D1F30039096D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -50,6 +53,7 @@
 		79CF50C021A5D9500039096D /* UIStoryboard+Identifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Identifiable.swift"; sourceTree = "<group>"; };
 		79CF50C221A5D9D40039096D /* LoginVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginVC.storyboard; sourceTree = "<group>"; };
 		79CF50C421A5DAAC0039096D /* FaceboookAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceboookAPI.swift; sourceTree = "<group>"; };
+		DBB657329030F6C2E54E2E34 /* Pods-GT_PhotoAlbums.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GT_PhotoAlbums.debug.xcconfig"; path = "Target Support Files/Pods-GT_PhotoAlbums/Pods-GT_PhotoAlbums.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,17 +61,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0BC3CFA76F24BFEA4D8F27A /* Pods_GT_PhotoAlbums.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3DB904C8EB5CF5620C04A723 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DBB657329030F6C2E54E2E34 /* Pods-GT_PhotoAlbums.debug.xcconfig */,
+				552B9B9D7CB2BF108D85E816 /* Pods-GT_PhotoAlbums.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		5FDD4106B8AF0812C9C70BE6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				557B1957C433ED9A65681DA5 /* Pods_GT_PhotoAlbums.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		79CF506021A5D1F30039096D = {
 			isa = PBXGroup;
 			children = (
 				79CF506B21A5D1F30039096D /* GT_PhotoAlbums */,
 				79CF506A21A5D1F30039096D /* Products */,
+				3DB904C8EB5CF5620C04A723 /* Pods */,
+				5FDD4106B8AF0812C9C70BE6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -129,9 +153,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 79CF507B21A5D1F60039096D /* Build configuration list for PBXNativeTarget "GT_PhotoAlbums" */;
 			buildPhases = (
+				E51151CC0F263C0276A2808C /* [CP] Check Pods Manifest.lock */,
 				79CF506521A5D1F30039096D /* Sources */,
 				79CF506621A5D1F30039096D /* Frameworks */,
 				79CF506721A5D1F30039096D /* Resources */,
+				084CE03E865457FD88137A27 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -188,6 +214,65 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		084CE03E865457FD88137A27 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GT_PhotoAlbums/Pods-GT_PhotoAlbums-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GT_PhotoAlbums/Pods-GT_PhotoAlbums-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E51151CC0F263C0276A2808C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GT_PhotoAlbums-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		79CF506521A5D1F30039096D /* Sources */ = {
@@ -289,6 +374,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -343,6 +429,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -352,6 +439,7 @@
 		};
 		79CF507C21A5D1F60039096D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DBB657329030F6C2E54E2E34 /* Pods-GT_PhotoAlbums.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -370,6 +458,7 @@
 		};
 		79CF507D21A5D1F60039096D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 552B9B9D7CB2BF108D85E816 /* Pods-GT_PhotoAlbums.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

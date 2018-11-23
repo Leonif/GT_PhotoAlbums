@@ -6,10 +6,6 @@
 //  Copyright © 2018 Leonid Nifantyev. All rights reserved.
 //
 
-public protocol Parceable {
-    init(object: JSONObject)
-}
-
 public struct PhotoEntity: Parceable {
     let id: String?
     var link: String?

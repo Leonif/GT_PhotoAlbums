@@ -8,7 +8,7 @@
 
 import FacebookCore
 
-public typealias JSONObject = [String:Any]
+public typealias JSONObject = [String: Any]
 
 public enum PhotoAlbumListRepositoryError: Error {
 }

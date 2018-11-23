@@ -1,5 +1,5 @@
 //
-//  PhotoAlbumListRouter.swift
+//  PhotoAlbumRouter.swift
 //  GT_PhotoAlbums
 //
 //  Created by Leonid Nifantyev on 11/23/18.
@@ -8,11 +8,11 @@
 
 import UIKit
 
-protocol PhotoAlbumListRouter: BaseRouter {
+protocol PhotoAlbumRouter: BaseRouter {
     func showAlbum()
 }
 
-class PhotoAlbumListRouterImpl: PhotoAlbumListRouter {
+class PhotoAlbumRouterImpl: PhotoAlbumRouter {
     
     private var vc: BaseView!
     

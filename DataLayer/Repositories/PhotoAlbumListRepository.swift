@@ -27,27 +27,14 @@ public class PhotoAlbumListCloudRepository: PhotoAlbumListRepository {
         let albumListRequest = GraphRequest(graphPath: "/me/albums",
                                    parameters: ["fields": "id, name, cover_photo"],
                                    httpMethod: .GET)
-        albumListRequest.start { [weak self] (response, result) in
+        albumListRequest.start { (response, result) in
             switch result {
             case let .success(response: response):
                 guard
                     let dict = response.dictionaryValue,
                     let data = dict["data"] as? [JSONObject] else { return }
                 
-                var output: [PhotoAlbumEntity] = data.map { unbox(from: $0) }
-                
-                for (index, item) in output.enumerated() {
-                    
-                    guard let coverPhoto = item.coverPhoto, let id = coverPhoto.id else { continue }
-                    
-                    self?.fetchPhotoWith(id: id, callback: { (result) in
-                        switch result {
-                        case let .success(entity):
-                            output[index].coverPhoto?.link = entity.link
-                        default: break
-                        }
-                    })
-                }
+                let output: [PhotoAlbumEntity] = data.map { unbox(from: $0) }
                 callback(PhotoAlbumListResult.success(output))
             case let .failed(error):
                 debugPrint(error)
@@ -68,3 +55,4 @@ public class PhotoAlbumListCloudRepository: PhotoAlbumListRepository {
             }
         }
     }
+}

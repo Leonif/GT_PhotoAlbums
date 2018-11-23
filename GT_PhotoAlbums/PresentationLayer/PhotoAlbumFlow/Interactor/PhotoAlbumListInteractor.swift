@@ -6,8 +6,6 @@
 //  Copyright © 2018 Leonid Nifantyev. All rights reserved.
 //
 
-import DataLayer
-
 protocol PhotoAlbumListInteractor {
     func fetchAlbumList(completion: @escaping (LoginRepositoryResult<Void>) -> Void)
 }

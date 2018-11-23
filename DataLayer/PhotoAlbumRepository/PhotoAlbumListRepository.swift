@@ -14,18 +14,18 @@ struct PhotoAlbumInfo {
     let coverPhoto: UIImage
 }
 
-enum PhotoAlbumListRepositoryError: Error {
+public enum PhotoAlbumListRepositoryError: Error {
     
 }
 
-typealias PhotoAlbumListResult<T> = ResultType<T, PhotoAlbumListRepositoryError>
+public typealias PhotoAlbumListResult<T> = ResultType<T, PhotoAlbumListRepositoryError>
 
-protocol PhotoAlbumListRepository {
+public protocol PhotoAlbumListRepository {
     func fetchAlbumList(callback: @escaping (PhotoAlbumListResult<Void>) -> Void)
 }
 
-class PhotoAlbumListCloudRepository: PhotoAlbumListRepository {
-    func fetchAlbumList(callback: @escaping (PhotoAlbumListResult<Void>) -> Void) {
+public class PhotoAlbumListCloudRepository: PhotoAlbumListRepository {
+    public func fetchAlbumList(callback: @escaping (PhotoAlbumListResult<Void>) -> Void) {
         let request = GraphRequest(graphPath: "/me/albums",
                                    httpMethod: .GET)
         request.start { (response, result) in

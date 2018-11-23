@@ -6,6 +6,8 @@
 //  Copyright © 2018 LionLife. All rights reserved.
 //
 
+import DataLayer
+
 protocol LoginInteractor {
     func login(completion: @escaping (LoginRepositoryResult<Void>) -> Void)
 }

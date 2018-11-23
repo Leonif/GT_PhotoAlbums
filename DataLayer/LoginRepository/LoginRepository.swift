@@ -8,29 +8,27 @@
 
 import FacebookLogin
 
-
-protocol LoginRepository {
+public protocol LoginRepository {
     func login(callback: @escaping (LoginRepositoryResult<Void>) -> Void)
 }
 
-
-enum LoginRepositoryError: Error {
+public enum LoginRepositoryError: Error {
     case loginError(String)
 }
 
 
-typealias LoginRepositoryResult<T> = ResultType<T, LoginRepositoryError>
+public typealias LoginRepositoryResult<T> = ResultType<T, LoginRepositoryError>
 
 
-class LoginCloudRepository: LoginRepository {
+public class LoginCloudRepository: LoginRepository {
     
     var manager: LoginManager!
     
-    init(_ manager: LoginManager) {
+    public init(_ manager: LoginManager) {
         self.manager = manager
     }
     
-    func login(callback: @escaping (LoginRepositoryResult<Void>) -> Void) {
+    public func login(callback: @escaping (LoginRepositoryResult<Void>) -> Void) {
         self.manager.logIn(readPermissions: [.publicProfile, .userPhotos], viewController: nil) { (result) in
             switch result {
             case .failed(let error):

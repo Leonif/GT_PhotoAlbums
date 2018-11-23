@@ -8,24 +8,23 @@
 
 import UIKit
 import FacebookLogin
+import DataLayer
 
 class PhotoAlbumListAssembler {
     
     func assemble() -> UIViewController {
         let view = PhotoAlbumListVC.initFromStoryboard()
-//        let presenter = LoginPresenterImpl()
-//        view.presenter = presenter
-//        presenter.view = view
-//        
-//        let manager = LoginManager()
-//        
-//        let provider = FacebookApi(manager: manager)
-//        let interactor = LoginInteractorImpl()
-//        interactor.provider = provider
-//        
-//        let router = LoginRouterImpl(vc: view)
-//        presenter.interactor = interactor
-//        presenter.router = router
+        let presenter = PhotoAlbumListPresenterImpl()
+        view.presenter = presenter
+        presenter.view = view
+        
+        let repository = PhotoAlbumListCloudRepository()
+        let interactor = PhotoAlbumListInteractorImpl()
+        interactor.repository = repository
+        
+        let router = PhotoAlbumListRouterImpl(vc: view)
+        presenter.interactor = interactor
+        presenter.router = router
         
         return view
     }

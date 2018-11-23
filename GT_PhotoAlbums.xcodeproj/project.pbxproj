@@ -10,6 +10,8 @@
 		7913850C21A891B800225F0F /* PhotoAlbumListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CF50E621A877D40039096D /* PhotoAlbumListRepository.swift */; };
 		7913850D21A891BF00225F0F /* LoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CF50D321A871870039096D /* LoginRepository.swift */; };
 		7913850E21A892A000225F0F /* ResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CF508421A5D3B60039096D /* ResultType.swift */; };
+		7913851021A8968700225F0F /* PhotoAlbumEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7913850F21A8968700225F0F /* PhotoAlbumEntity.swift */; };
+		7913851421A8A97600225F0F /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7913851321A8A97600225F0F /* Helpers.swift */; };
 		79CF506D21A5D1F30039096D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CF506C21A5D1F30039096D /* AppDelegate.swift */; };
 		79CF507421A5D1F60039096D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79CF507321A5D1F60039096D /* Assets.xcassets */; };
 		79CF508121A5D39F0039096D /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CF508021A5D39F0039096D /* BaseView.swift */; };
@@ -69,6 +71,8 @@
 		4566E2BF11BF390EEFF18E44 /* Pods_DataLayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DataLayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		552B9B9D7CB2BF108D85E816 /* Pods-GT_PhotoAlbums.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GT_PhotoAlbums.release.xcconfig"; path = "Target Support Files/Pods-GT_PhotoAlbums/Pods-GT_PhotoAlbums.release.xcconfig"; sourceTree = "<group>"; };
 		557B1957C433ED9A65681DA5 /* Pods_GT_PhotoAlbums.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GT_PhotoAlbums.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7913850F21A8968700225F0F /* PhotoAlbumEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbumEntity.swift; sourceTree = "<group>"; };
+		7913851321A8A97600225F0F /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		79CF506921A5D1F30039096D /* GT_PhotoAlbums.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GT_PhotoAlbums.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79CF506C21A5D1F30039096D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79CF507321A5D1F60039096D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -142,6 +146,24 @@
 				4566E2BF11BF390EEFF18E44 /* Pods_DataLayer.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7913851121A8968C00225F0F /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				7913850F21A8968700225F0F /* PhotoAlbumEntity.swift */,
+				7913851321A8A97600225F0F /* Helpers.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		7913851221A896D500225F0F /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				79CF50D321A871870039096D /* LoginRepository.swift */,
+				79CF50E621A877D40039096D /* PhotoAlbumListRepository.swift */,
+			);
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 		79CF506021A5D1F30039096D = {
@@ -281,14 +303,6 @@
 			path = Interactor;
 			sourceTree = "<group>";
 		};
-		79CF50E221A877770039096D /* LoginRepository */ = {
-			isa = PBXGroup;
-			children = (
-				79CF50D321A871870039096D /* LoginRepository.swift */,
-			);
-			path = LoginRepository;
-			sourceTree = "<group>";
-		};
 		79CF50E321A877820039096D /* Assembler */ = {
 			isa = PBXGroup;
 			children = (
@@ -313,14 +327,6 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
-		79CF50E821A878C60039096D /* PhotoAlbumRepository */ = {
-			isa = PBXGroup;
-			children = (
-				79CF50E621A877D40039096D /* PhotoAlbumListRepository.swift */,
-			);
-			path = PhotoAlbumRepository;
-			sourceTree = "<group>";
-		};
 		79CF50E921A8821F0039096D /* BaseFlow */ = {
 			isa = PBXGroup;
 			children = (
@@ -334,8 +340,8 @@
 		79CF50F221A88D190039096D /* DataLayer */ = {
 			isa = PBXGroup;
 			children = (
-				79CF50E221A877770039096D /* LoginRepository */,
-				79CF50E821A878C60039096D /* PhotoAlbumRepository */,
+				7913851121A8968C00225F0F /* Entities */,
+				7913851221A896D500225F0F /* Repositories */,
 				79CF50F321A88D190039096D /* DataLAyer.h */,
 				79CF50F421A88D190039096D /* Info.plist */,
 			);
@@ -568,6 +574,8 @@
 			files = (
 				7913850C21A891B800225F0F /* PhotoAlbumListRepository.swift in Sources */,
 				7913850E21A892A000225F0F /* ResultType.swift in Sources */,
+				7913851021A8968700225F0F /* PhotoAlbumEntity.swift in Sources */,
+				7913851421A8A97600225F0F /* Helpers.swift in Sources */,
 				7913850D21A891BF00225F0F /* LoginRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

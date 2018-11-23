@@ -9,7 +9,7 @@
 import UIKit
 
 protocol LoginRouter: BaseRouter {
-    func showAlbums()
+    func showAlbumList()
 }
 
 class LoginRouterImpl: LoginRouter {
@@ -20,9 +20,9 @@ class LoginRouterImpl: LoginRouter {
         self.vc = vc
     }
     
-    func showAlbums() {
+    func showAlbumList() {
         
-        let albumView = PhotoAlbumAssembler().assemble()
+        let albumView = PhotoAlbumListAssembler().assemble()
         
         let view = UINavigationController(rootViewController: albumView)
         

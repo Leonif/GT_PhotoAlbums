@@ -6,18 +6,16 @@
 //  Copyright © 2018 LionLife. All rights reserved.
 //
 
-import Foundation
-
 protocol LoginInteractor {
-    func login(completion: @escaping (BackendResult<Void>) -> Void)
+    func login(completion: @escaping (LoginRepositoryResult<Void>) -> Void)
 }
 
 class LoginInteractorImpl: LoginInteractor {
     
-    var provider: BackendInterface!
+    var repository: LoginRepository!
     
-    func login(completion: @escaping (BackendResult<Void>) -> Void) {
-        provider.login { (result) in
+    func login(completion: @escaping (LoginRepositoryResult<Void>) -> Void) {
+        repository.login { (result) in
             completion(result)
         }
     }

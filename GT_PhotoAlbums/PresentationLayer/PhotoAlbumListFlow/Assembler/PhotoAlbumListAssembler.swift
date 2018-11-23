@@ -1,5 +1,5 @@
 //
-//  PhotoAlbumAssembler.swift
+//  PhotoAlbumListAssembler.swift
 //  GT_PhotoAlbums
 //
 //  Created by Leonid Nifantyev on 11/21/18.
@@ -9,10 +9,10 @@
 import UIKit
 import FacebookLogin
 
-class PhotoAlbumAssembler {
+class PhotoAlbumListAssembler {
     
     func assemble() -> UIViewController {
-        let view = PhotoAlbumVC.initFromStoryboard()
+        let view = PhotoAlbumListVC.initFromStoryboard()
 //        let presenter = LoginPresenterImpl()
 //        view.presenter = presenter
 //        presenter.view = view

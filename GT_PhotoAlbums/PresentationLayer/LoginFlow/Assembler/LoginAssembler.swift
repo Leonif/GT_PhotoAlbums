@@ -19,9 +19,9 @@ class LoginAssembler {
         
         let manager = LoginManager()
         
-        let provider = FacebookApi(manager: manager)
+        let repository = LoginCloudRepository(manager)
         let interactor = LoginInteractorImpl()
-        interactor.provider = provider
+        interactor.repository = repository
         
         let router = LoginRouterImpl(vc: view)
         presenter.interactor = interactor

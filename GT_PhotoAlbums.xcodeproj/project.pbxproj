@@ -18,16 +18,20 @@
 		79CF50B721A5D3DD0039096D /* LoginAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CF50B221A5D3DD0039096D /* LoginAssembler.swift */; };
 		79CF50B821A5D3DD0039096D /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CF50B321A5D3DD0039096D /* LoginPresenter.swift */; };
 		79CF50B921A5D3DD0039096D /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CF50B421A5D3DD0039096D /* LoginRouter.swift */; };
-		79CF50BB21A5D49B0039096D /* BackendInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CF50BA21A5D49B0039096D /* BackendInterface.swift */; };
 		79CF50BD21A5D5550039096D /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CF50BC21A5D5550039096D /* UIViewExtensions.swift */; };
 		79CF50BF21A5D6020039096D /* UIColors+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CF50BE21A5D6020039096D /* UIColors+Extensions.swift */; };
 		79CF50C121A5D9500039096D /* UIStoryboard+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CF50C021A5D9500039096D /* UIStoryboard+Identifiable.swift */; };
 		79CF50C321A5D9D40039096D /* LoginVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79CF50C221A5D9D40039096D /* LoginVC.storyboard */; };
-		79CF50C521A5DAAC0039096D /* FaceboookAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CF50C421A5DAAC0039096D /* FaceboookAPI.swift */; };
 		79CF50CB21A5F43E0039096D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79CF50C921A5F43D0039096D /* LaunchScreen.storyboard */; };
-		79CF50CD21A5F4BC0039096D /* PhotoAlbumVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CF50CC21A5F4BC0039096D /* PhotoAlbumVC.swift */; };
-		79CF50D021A5F4DA0039096D /* PhotoAlbumVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79CF50CF21A5F4DA0039096D /* PhotoAlbumVC.storyboard */; };
-		79CF50D221A5F5980039096D /* PhotoAlbumAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CF50D121A5F5980039096D /* PhotoAlbumAssembler.swift */; };
+		79CF50CD21A5F4BC0039096D /* PhotoAlbumListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CF50CC21A5F4BC0039096D /* PhotoAlbumListVC.swift */; };
+		79CF50D021A5F4DA0039096D /* PhotoAlbumListVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79CF50CF21A5F4DA0039096D /* PhotoAlbumListVC.storyboard */; };
+		79CF50D221A5F5980039096D /* PhotoAlbumListAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CF50D121A5F5980039096D /* PhotoAlbumListAssembler.swift */; };
+		79CF50D421A871870039096D /* LoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CF50D321A871870039096D /* LoginRepository.swift */; };
+		79CF50D721A874A50039096D /* PhotoAlbumListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CF50D621A874A50039096D /* PhotoAlbumListPresenter.swift */; };
+		79CF50D921A876380039096D /* PhotoAlbumListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CF50D821A876380039096D /* PhotoAlbumListRouter.swift */; };
+		79CF50DB21A876B40039096D /* PhotoAlbumListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CF50DA21A876B40039096D /* PhotoAlbumListInteractor.swift */; };
+		79CF50E721A877D40039096D /* PhotoAlbumListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CF50E621A877D40039096D /* PhotoAlbumListRepository.swift */; };
+		79CF50EB21A8824D0039096D /* BasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CF50EA21A8824D0039096D /* BasePresenter.swift */; };
 		B0BC3CFA76F24BFEA4D8F27A /* Pods_GT_PhotoAlbums.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 557B1957C433ED9A65681DA5 /* Pods_GT_PhotoAlbums.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,16 +51,20 @@
 		79CF50B221A5D3DD0039096D /* LoginAssembler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginAssembler.swift; sourceTree = "<group>"; };
 		79CF50B321A5D3DD0039096D /* LoginPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		79CF50B421A5D3DD0039096D /* LoginRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
-		79CF50BA21A5D49B0039096D /* BackendInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendInterface.swift; sourceTree = "<group>"; };
 		79CF50BC21A5D5550039096D /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		79CF50BE21A5D6020039096D /* UIColors+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColors+Extensions.swift"; sourceTree = "<group>"; };
 		79CF50C021A5D9500039096D /* UIStoryboard+Identifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Identifiable.swift"; sourceTree = "<group>"; };
 		79CF50C221A5D9D40039096D /* LoginVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginVC.storyboard; sourceTree = "<group>"; };
-		79CF50C421A5DAAC0039096D /* FaceboookAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceboookAPI.swift; sourceTree = "<group>"; };
 		79CF50CA21A5F43D0039096D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = GT_PhotoAlbums/Base.lproj/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
-		79CF50CC21A5F4BC0039096D /* PhotoAlbumVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbumVC.swift; sourceTree = "<group>"; };
-		79CF50CF21A5F4DA0039096D /* PhotoAlbumVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PhotoAlbumVC.storyboard; sourceTree = "<group>"; };
-		79CF50D121A5F5980039096D /* PhotoAlbumAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbumAssembler.swift; sourceTree = "<group>"; };
+		79CF50CC21A5F4BC0039096D /* PhotoAlbumListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbumListVC.swift; sourceTree = "<group>"; };
+		79CF50CF21A5F4DA0039096D /* PhotoAlbumListVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PhotoAlbumListVC.storyboard; sourceTree = "<group>"; };
+		79CF50D121A5F5980039096D /* PhotoAlbumListAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbumListAssembler.swift; sourceTree = "<group>"; };
+		79CF50D321A871870039096D /* LoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepository.swift; sourceTree = "<group>"; };
+		79CF50D621A874A50039096D /* PhotoAlbumListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbumListPresenter.swift; sourceTree = "<group>"; };
+		79CF50D821A876380039096D /* PhotoAlbumListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbumListRouter.swift; sourceTree = "<group>"; };
+		79CF50DA21A876B40039096D /* PhotoAlbumListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbumListInteractor.swift; sourceTree = "<group>"; };
+		79CF50E621A877D40039096D /* PhotoAlbumListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbumListRepository.swift; sourceTree = "<group>"; };
+		79CF50EA21A8824D0039096D /* BasePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePresenter.swift; sourceTree = "<group>"; };
 		DBB657329030F6C2E54E2E34 /* Pods-GT_PhotoAlbums.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GT_PhotoAlbums.debug.xcconfig"; path = "Target Support Files/Pods-GT_PhotoAlbums/Pods-GT_PhotoAlbums.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -123,13 +131,12 @@
 		79CF507F21A5D38A0039096D /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				79CF50E921A8821F0039096D /* BaseFlow */,
 				79CF50C021A5D9500039096D /* UIStoryboard+Identifiable.swift */,
 				79CF50BE21A5D6020039096D /* UIColors+Extensions.swift */,
 				79CF50BC21A5D5550039096D /* UIViewExtensions.swift */,
 				79CF508621A5D3BB0039096D /* EventHandler.swift */,
 				79CF508421A5D3B60039096D /* ResultType.swift */,
-				79CF508221A5D3AF0039096D /* BaseRouter.swift */,
-				79CF508021A5D39F0039096D /* BaseView.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -137,12 +144,11 @@
 		79CF50AF21A5D3DD0039096D /* LoginFlow */ = {
 			isa = PBXGroup;
 			children = (
-				79CF50C221A5D9D40039096D /* LoginVC.storyboard */,
-				79CF50B021A5D3DD0039096D /* LoginInteractor.swift */,
-				79CF50B121A5D3DD0039096D /* LoginVC.swift */,
-				79CF50B221A5D3DD0039096D /* LoginAssembler.swift */,
-				79CF50B321A5D3DD0039096D /* LoginPresenter.swift */,
-				79CF50B421A5D3DD0039096D /* LoginRouter.swift */,
+				79CF50E321A877820039096D /* Assembler */,
+				79CF50D521A872460039096D /* View */,
+				79CF50E421A877890039096D /* Presenter */,
+				79CF50E121A877660039096D /* Interactor */,
+				79CF50E521A877930039096D /* Router */,
 			);
 			path = LoginFlow;
 			sourceTree = "<group>";
@@ -150,8 +156,8 @@
 		79CF50C721A5F1DB0039096D /* DataLayer */ = {
 			isa = PBXGroup;
 			children = (
-				79CF50C421A5DAAC0039096D /* FaceboookAPI.swift */,
-				79CF50BA21A5D49B0039096D /* BackendInterface.swift */,
+				79CF50E821A878C60039096D /* PhotoAlbumRepository */,
+				79CF50E221A877770039096D /* LoginRepository */,
 			);
 			path = DataLayer;
 			sourceTree = "<group>";
@@ -161,19 +167,129 @@
 			children = (
 				79CF50C921A5F43D0039096D /* LaunchScreen.storyboard */,
 				79CF50AF21A5D3DD0039096D /* LoginFlow */,
-				79CF50CE21A5F4C30039096D /* PhotoAlbumFlow */,
+				79CF50CE21A5F4C30039096D /* PhotoAlbumListFlow */,
 			);
 			path = PresentationLayer;
 			sourceTree = "<group>";
 		};
-		79CF50CE21A5F4C30039096D /* PhotoAlbumFlow */ = {
+		79CF50CE21A5F4C30039096D /* PhotoAlbumListFlow */ = {
 			isa = PBXGroup;
 			children = (
-				79CF50CC21A5F4BC0039096D /* PhotoAlbumVC.swift */,
-				79CF50D121A5F5980039096D /* PhotoAlbumAssembler.swift */,
-				79CF50CF21A5F4DA0039096D /* PhotoAlbumVC.storyboard */,
+				79CF50DD21A877430039096D /* Assembler */,
+				79CF50DC21A877380039096D /* View */,
+				79CF50DE21A8774B0039096D /* Presenter */,
+				79CF50E021A8775D0039096D /* Router */,
+				79CF50DF21A877540039096D /* Interactor */,
 			);
-			path = PhotoAlbumFlow;
+			path = PhotoAlbumListFlow;
+			sourceTree = "<group>";
+		};
+		79CF50D521A872460039096D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				79CF50C221A5D9D40039096D /* LoginVC.storyboard */,
+				79CF50B121A5D3DD0039096D /* LoginVC.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		79CF50DC21A877380039096D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				79CF50CC21A5F4BC0039096D /* PhotoAlbumListVC.swift */,
+				79CF50CF21A5F4DA0039096D /* PhotoAlbumListVC.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		79CF50DD21A877430039096D /* Assembler */ = {
+			isa = PBXGroup;
+			children = (
+				79CF50D121A5F5980039096D /* PhotoAlbumListAssembler.swift */,
+			);
+			path = Assembler;
+			sourceTree = "<group>";
+		};
+		79CF50DE21A8774B0039096D /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				79CF50D621A874A50039096D /* PhotoAlbumListPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		79CF50DF21A877540039096D /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				79CF50DA21A876B40039096D /* PhotoAlbumListInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		79CF50E021A8775D0039096D /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				79CF50D821A876380039096D /* PhotoAlbumListRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		79CF50E121A877660039096D /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				79CF50B021A5D3DD0039096D /* LoginInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		79CF50E221A877770039096D /* LoginRepository */ = {
+			isa = PBXGroup;
+			children = (
+				79CF50D321A871870039096D /* LoginRepository.swift */,
+			);
+			path = LoginRepository;
+			sourceTree = "<group>";
+		};
+		79CF50E321A877820039096D /* Assembler */ = {
+			isa = PBXGroup;
+			children = (
+				79CF50B221A5D3DD0039096D /* LoginAssembler.swift */,
+			);
+			path = Assembler;
+			sourceTree = "<group>";
+		};
+		79CF50E421A877890039096D /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				79CF50B321A5D3DD0039096D /* LoginPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		79CF50E521A877930039096D /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				79CF50B421A5D3DD0039096D /* LoginRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		79CF50E821A878C60039096D /* PhotoAlbumRepository */ = {
+			isa = PBXGroup;
+			children = (
+				79CF50E621A877D40039096D /* PhotoAlbumListRepository.swift */,
+			);
+			path = PhotoAlbumRepository;
+			sourceTree = "<group>";
+		};
+		79CF50E921A8821F0039096D /* BaseFlow */ = {
+			isa = PBXGroup;
+			children = (
+				79CF508221A5D3AF0039096D /* BaseRouter.swift */,
+				79CF508021A5D39F0039096D /* BaseView.swift */,
+				79CF50EA21A8824D0039096D /* BasePresenter.swift */,
+			);
+			path = BaseFlow;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,7 +355,7 @@
 				79CF50CB21A5F43E0039096D /* LaunchScreen.storyboard in Resources */,
 				79CF507421A5D1F60039096D /* Assets.xcassets in Resources */,
 				79CF50C321A5D9D40039096D /* LoginVC.storyboard in Resources */,
-				79CF50D021A5F4DA0039096D /* PhotoAlbumVC.storyboard in Resources */,
+				79CF50D021A5F4DA0039096D /* PhotoAlbumListVC.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,21 +426,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				79CF50C121A5D9500039096D /* UIStoryboard+Identifiable.swift in Sources */,
+				79CF50D921A876380039096D /* PhotoAlbumListRouter.swift in Sources */,
 				79CF50B521A5D3DD0039096D /* LoginInteractor.swift in Sources */,
-				79CF50CD21A5F4BC0039096D /* PhotoAlbumVC.swift in Sources */,
+				79CF50CD21A5F4BC0039096D /* PhotoAlbumListVC.swift in Sources */,
 				79CF508521A5D3B60039096D /* ResultType.swift in Sources */,
 				79CF508721A5D3BB0039096D /* EventHandler.swift in Sources */,
 				79CF50BF21A5D6020039096D /* UIColors+Extensions.swift in Sources */,
-				79CF50C521A5DAAC0039096D /* FaceboookAPI.swift in Sources */,
 				79CF50BD21A5D5550039096D /* UIViewExtensions.swift in Sources */,
 				79CF508121A5D39F0039096D /* BaseView.swift in Sources */,
 				79CF50B721A5D3DD0039096D /* LoginAssembler.swift in Sources */,
+				79CF50EB21A8824D0039096D /* BasePresenter.swift in Sources */,
+				79CF50D421A871870039096D /* LoginRepository.swift in Sources */,
 				79CF50B821A5D3DD0039096D /* LoginPresenter.swift in Sources */,
 				79CF506D21A5D1F30039096D /* AppDelegate.swift in Sources */,
-				79CF50D221A5F5980039096D /* PhotoAlbumAssembler.swift in Sources */,
+				79CF50E721A877D40039096D /* PhotoAlbumListRepository.swift in Sources */,
+				79CF50D221A5F5980039096D /* PhotoAlbumListAssembler.swift in Sources */,
 				79CF508321A5D3AF0039096D /* BaseRouter.swift in Sources */,
 				79CF50B921A5D3DD0039096D /* LoginRouter.swift in Sources */,
-				79CF50BB21A5D49B0039096D /* BackendInterface.swift in Sources */,
+				79CF50D721A874A50039096D /* PhotoAlbumListPresenter.swift in Sources */,
+				79CF50DB21A876B40039096D /* PhotoAlbumListInteractor.swift in Sources */,
 				79CF50B621A5D3DD0039096D /* LoginVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

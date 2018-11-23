@@ -6,26 +6,24 @@
 //  Copyright © 2018 LionLife. All rights reserved.
 //
 
-import Foundation
-
-protocol LoginPresenter {
+protocol LoginPresenter: BasePresenter {
     func login()
 }
 
 class LoginPresenterImpl: LoginPresenter {
+    func viewDidLoad() {}
+    
     var interactor: LoginInteractor!
-    var view: LoginVC!
+    weak var view: LoginVC!
     var router: LoginRouter!
     
     func login() {
         interactor.login { [weak self] (result) in
             switch result {
             case .success:
-                self?.router.showAlbums()
+                self?.router.showAlbumList()
             case let .failure(.loginError(message)):
                 self?.view.onError(with: message)
-//            case let .failure(error):
-//                self?.view.onError(with: error.localizedDescription)
             }
         }
     }

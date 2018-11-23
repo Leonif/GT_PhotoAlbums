@@ -1,5 +1,5 @@
 //
-//  PhotoAlbumVC.swift
+//  PhotoAlbumListVC.swift
 //  GT_PhotoAlbums
 //
 //  Created by Leonid Nifantyev on 11/21/18.
@@ -8,12 +8,12 @@
 
 import UIKit
 
-protocol PhotoAlbumView: BaseView {
+protocol PhotoAlbumListView: BaseView {
 }
 
 
 
-class PhotoAlbumVC: UIViewController, PhotoAlbumView {
+class PhotoAlbumListVC: UIViewController, PhotoAlbumListView {
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,9 +22,6 @@ class PhotoAlbumVC: UIViewController, PhotoAlbumView {
         
         
     }
-
-
-
 
     func close() {
         

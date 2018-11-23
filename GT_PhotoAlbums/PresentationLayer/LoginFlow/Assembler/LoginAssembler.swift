@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DataLayer
 import FacebookLogin
 
 class LoginAssembler {

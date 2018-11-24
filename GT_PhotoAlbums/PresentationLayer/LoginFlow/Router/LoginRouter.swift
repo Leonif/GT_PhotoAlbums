@@ -24,7 +24,8 @@ class LoginRouterImpl: LoginRouter {
         
         let albumView = PhotoAlbumListAssembler().assemble()
         
+        let navigationController = UINavigationController(rootViewController: albumView)
         
-        presentController(fromModule: vc, to: albumView)
+        presentController(fromModule: vc, to: navigationController)
     }
 }

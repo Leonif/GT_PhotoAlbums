@@ -14,9 +14,11 @@ enum PhotoAlbumListAdapterEvent {
     case selected(PhotoAlbumViewItem)
 }
 
+typealias Item = PhotoAlbumViewItem
+
 class PhotoAlbumListAdapter: NSObject, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    var datasource: [PhotoAlbumViewItem] = [] {
+    var datasource: [Item] = [] {
         didSet { eventHandler?(.update) }
     }
     
@@ -41,12 +43,18 @@ class PhotoAlbumListAdapter: NSObject, UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: PhotoAlbumCell = collectionView.dequeueReusableCell(for: indexPath)
         
+        let item = getItem(for: indexPath)
+        cell.config(item: item)
         return cell
     }
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let item = datasource[indexPath.row]
+        let item = getItem(for: indexPath)
         eventHandler?(.selected(item))
+    }
+    
+    private func getItem(for indexPath: IndexPath) -> Item {
+        return datasource[indexPath.row]
     }
 }

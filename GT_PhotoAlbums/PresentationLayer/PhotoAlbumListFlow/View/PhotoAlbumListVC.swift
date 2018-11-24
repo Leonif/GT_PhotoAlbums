@@ -33,8 +33,17 @@ class PhotoAlbumListVC: UIViewController, PhotoAlbumListView {
         super.viewDidLoad()
         presenter.viewDidLoad()
         
-        setupCollectionView()
+        navigationItem.title = "Albums"
         
+        setupCollectionView()
+        eventBinding()
+    }
+    
+    func update(albums: [PhotoAlbumViewItem]) {
+        adapter.datasource = albums
+    }
+    
+    private func eventBinding() {
         adapter.eventHandler = { [weak self] event in
             switch event {
             case .update:
@@ -43,10 +52,6 @@ class PhotoAlbumListVC: UIViewController, PhotoAlbumListView {
                 debugPrint(item.id)
             }
         }
-    }
-    
-    func update(albums: [PhotoAlbumViewItem]) {
-        adapter.datasource = albums
     }
 
     func close() { }

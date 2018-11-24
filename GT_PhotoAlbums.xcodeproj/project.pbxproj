@@ -250,6 +250,15 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
+		796D6A6221A9874E00F0A815 /* PhotoAlbumCell */ = {
+			isa = PBXGroup;
+			children = (
+				79C98F6E21A960C000B0342E /* PhotoAlbumCell.swift */,
+				79C98F6F21A960C000B0342E /* PhotoAlbumCell.xib */,
+			);
+			path = PhotoAlbumCell;
+			sourceTree = "<group>";
+		};
 		79C98F6221A92C5F00B0342E /* PhotoAlbumRepository */ = {
 			isa = PBXGroup;
 			children = (
@@ -366,8 +375,7 @@
 				79CF50CC21A5F4BC0039096D /* PhotoAlbumListVC.swift */,
 				79C98F7421A9631300B0342E /* PhotoAlbumListAdapter.swift */,
 				79CF50CF21A5F4DA0039096D /* PhotoAlbumListVC.storyboard */,
-				79C98F6E21A960C000B0342E /* PhotoAlbumCell.swift */,
-				79C98F6F21A960C000B0342E /* PhotoAlbumCell.xib */,
+				796D6A6221A9874E00F0A815 /* PhotoAlbumCell */,
 			);
 			path = View;
 			sourceTree = "<group>";

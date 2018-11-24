@@ -19,10 +19,9 @@ class PhotoAlbumListVC: UIViewController, PhotoAlbumListView {
     
     var presenter: PhotoAlbumListPresenter!
     var interactor: PhotoAlbumListInteractor!
-    var adapter: PhotoAlbumListAdapter!
+    var adapter: PhotoAdapter<PhotoAlbumCell, PhotoAlbumViewItem>!
     
-    
-    fileprivate func setupCollectionView() {
+    private func setupCollectionView() {
         collectionView.register(PhotoAlbumCell.self)
         collectionView.delegate = adapter
         collectionView.dataSource = adapter

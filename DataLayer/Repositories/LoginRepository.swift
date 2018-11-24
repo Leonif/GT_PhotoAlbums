@@ -28,7 +28,6 @@ public class LoginCloudRepository: LoginRepository {
     }
     
     public func login(callback: @escaping (LoginRepositoryResult<Void>) -> Void) {
-        
         if AccessToken.current != nil {
             callback(LoginRepositoryResult.success(()))
             return

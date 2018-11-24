@@ -6,16 +6,6 @@
 //  Copyright © 2018 Leonid Nifantyev. All rights reserved.
 //
 
-public struct PhotoEntity: Parceable {
-    let id: String?
-    var link: String?
-    
-    public init(object: JSONObject) {
-        id = object["id"] as? String
-        link = nil
-    }
-}
-
 public struct PhotoAlbumEntity: Parceable {
     public let id: String?
     public let name: String?

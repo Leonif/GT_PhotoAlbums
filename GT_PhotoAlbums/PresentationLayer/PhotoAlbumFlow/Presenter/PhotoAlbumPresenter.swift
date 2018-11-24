@@ -16,6 +16,7 @@ class PhotoAlbumPresenterImpl: PhotoAlbumPresenter {
     var interactor: PhotoAlbumInteractor!
     weak var view: PhotoAlbumView!
     var router: PhotoAlbumRouter!
+    var mapper: PhotoAlbumMapper!
     
     func viewDidLoad() {
         interactor.fetchAlbumList { (result) in

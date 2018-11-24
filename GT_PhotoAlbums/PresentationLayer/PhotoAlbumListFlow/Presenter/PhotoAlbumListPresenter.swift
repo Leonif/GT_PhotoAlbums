@@ -9,11 +9,7 @@
 import Foundation
 
 protocol PhotoAlbumListPresenter: BasePresenter {
-    func showPhotoAlbum()
-}
-
-protocol PhotoAlbumListPresenterOutput {
-    
+    func showPhotoAlbum(with id: String)
 }
 
 class PhotoAlbumListPresenterImpl: PhotoAlbumListPresenter {
@@ -39,7 +35,7 @@ class PhotoAlbumListPresenterImpl: PhotoAlbumListPresenter {
         }
     }
     
-    func showPhotoAlbum() {
-        router.showAlbum()
+    func showPhotoAlbum(with id: String) {
+        router.showAlbum(with: id)
     }
 }

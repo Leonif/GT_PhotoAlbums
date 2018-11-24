@@ -9,23 +9,29 @@
 import UIKit
 
 
-enum PhotoAlbumListAdapterEvent {
+enum PhotoAdapterEvent<Item> {
     case update
-    case selected(PhotoAlbumViewItem)
+    case selected(Item)
 }
 
-typealias Item = PhotoAlbumViewItem
+protocol Configurable {
+    associatedtype Item
+    func config(item: Item)
+}
 
-class PhotoAlbumListAdapter: NSObject, UICollectionViewDelegate, UICollectionViewDataSource {
+class PhotoAdapter<Cell: UICollectionViewCell, Item>:
+    NSObject, UICollectionViewDelegate, UICollectionViewDataSource
+    where Cell: NibLoadableReusable & Configurable, Cell.Item == Item {
     
     var datasource: [Item] = [] {
         didSet { eventHandler?(.update) }
     }
     
+    private var columns: CGFloat
+    
     var layout: UICollectionViewFlowLayout? {
         didSet {
             let padding: CGFloat = 2
-            let columns: CGFloat = 2
             var width = UIScreen.main.bounds.size.width / columns
             width -= (padding * (columns - 1))
             layout?.itemSize = CGSize(width: width, height: width)
@@ -34,20 +40,24 @@ class PhotoAlbumListAdapter: NSObject, UICollectionViewDelegate, UICollectionVie
         }
     }
     
-    var eventHandler: EventHandler<PhotoAlbumListAdapterEvent>?
+    init(columns: CGFloat) {
+        self.columns = columns
+        super.init()
+    }
+    
+    var eventHandler: EventHandler<PhotoAdapterEvent<Item>>?
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return datasource.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: PhotoAlbumCell = collectionView.dequeueReusableCell(for: indexPath)
+        let cell: Cell = collectionView.dequeueReusableCell(for: indexPath)
         
         let item = getItem(for: indexPath)
         cell.config(item: item)
         return cell
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = getItem(for: indexPath)

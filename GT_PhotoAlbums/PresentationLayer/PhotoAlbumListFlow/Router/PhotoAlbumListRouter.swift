@@ -9,7 +9,7 @@
 import UIKit
 
 protocol PhotoAlbumListRouter: BaseRouter {
-    func showAlbum()
+    func showAlbum(with id: String)
 }
 
 class PhotoAlbumListRouterImpl: PhotoAlbumListRouter {
@@ -20,7 +20,7 @@ class PhotoAlbumListRouterImpl: PhotoAlbumListRouter {
         self.vc = vc
     }
     
-    func showAlbum() {
+    func showAlbum(with id: String) {
         let albumView = PhotoAlbumListAssembler().assemble()
         let view = UINavigationController(rootViewController: albumView)
         presentController(fromModule: vc, to: view)

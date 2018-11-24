@@ -14,6 +14,7 @@ protocol PhotoAlbumView: BaseView {
 class PhotoAlbumVC: UIViewController, PhotoAlbumView {
     var presenter: PhotoAlbumPresenter!
     var interactor: PhotoAlbumInteractor!
+    var adapter: PhotoAdapter<PhotoCell, PhotoViewItem>!
     
     override func viewDidLoad() {
         super.viewDidLoad()

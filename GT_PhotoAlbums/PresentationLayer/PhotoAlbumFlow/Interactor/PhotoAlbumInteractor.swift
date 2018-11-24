@@ -15,6 +15,7 @@ protocol PhotoAlbumInteractor {
 class PhotoAlbumInteractorImpl: PhotoAlbumInteractor {
     
     var repository: PhotoAlbumRepository!
+    var presenter: PhotoAlbumPresenter!
     
     func fetchAlbumList(completion: @escaping (PhotoAlbumResult<Void>) -> Void) {
 //        repository.fetchAlbumList { (result) in

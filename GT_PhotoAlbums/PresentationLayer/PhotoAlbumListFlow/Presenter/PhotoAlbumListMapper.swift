@@ -8,11 +8,6 @@
 
 import DataLayer
 
-struct PhotoAlbumViewItem {
-    let id: String
-    let name: String
-    var urlString: String?
-}
 class PhotoAlbumListMapper {
     
     func transform(input: PhotoAlbumEntity) -> PhotoAlbumViewItem? {

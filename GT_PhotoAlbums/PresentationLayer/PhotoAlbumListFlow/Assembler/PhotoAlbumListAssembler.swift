@@ -15,7 +15,7 @@ class PhotoAlbumListAssembler {
     func assemble() -> UIViewController {
         let view = PhotoAlbumListVC.initFromStoryboard()
         let presenter = PhotoAlbumListPresenterImpl()
-        let adapter = PhotoAlbumListAdapter()
+        let adapter = PhotoAdapter<PhotoAlbumCell, PhotoAlbumViewItem>(columns: 2)
         view.presenter = presenter
         view.adapter = adapter
         presenter.view = view

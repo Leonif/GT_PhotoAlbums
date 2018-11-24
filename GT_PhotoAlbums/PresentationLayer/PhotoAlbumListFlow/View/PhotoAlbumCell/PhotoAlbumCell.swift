@@ -8,10 +8,12 @@
 
 import UIKit
 
-class PhotoAlbumCell: UICollectionViewCell, NibLoadableReusable {
+class PhotoAlbumCell: UICollectionViewCell, NibLoadableReusable, Configurable {
 
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var imageView: UIImageView!
+    
+    typealias Item = PhotoAlbumViewItem
     
     func config(item: PhotoAlbumViewItem) {
         titleLabel.text = item.name

@@ -36,6 +36,7 @@ class PhotoAlbumListInteractorImpl: PhotoAlbumListInteractor {
         for album in albums {
             group.enter()
             guard let id = album.coverPhotoId else {
+                output.append(album)
                 group.leave()
                 continue
             }

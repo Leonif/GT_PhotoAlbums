@@ -33,7 +33,8 @@ extension UIViewController {
 
         if let cancelAction = cancelAction {
             alert.addAction(UIAlertAction(title: "Not nesasery 🤠",
-                                          style: UIAlertAction.Style.cancel, handler: { (action: UIAlertAction!) in
+                                          style: UIAlertAction.Style.cancel,
+                                          handler: { (action: UIAlertAction!) in
                 cancelAction()
             }))
         }
@@ -51,10 +52,8 @@ extension UIViewController: UITextFieldDelegate {
         let cancelButton = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(cancelPressed))
         let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
-
         toolBar.isUserInteractionEnabled = true
         toolBar.sizeToFit()
-
         textField.delegate = self
         textField.inputAccessoryView = toolBar
     }
@@ -66,7 +65,6 @@ extension UIViewController: UITextFieldDelegate {
     @objc func cancelPressed() {
         view.endEditing(true) // or do something
     }
-
 }
 
 // Activity Indicator
@@ -106,16 +104,11 @@ extension UIView {
             self.setupLabel(on: backgroundView, title: title, and: locationOnView)
             self.setupIndicator(on: backgroundView, with: style, and: location)
             self.show(backgroundView)
-
         }
     }
     func startCustomActivityIndicator(style: UIActivityIndicatorView.Style = UIActivityIndicatorView.Style.white, location: CGPoint?) {
-
-        //let locationOnView = location ?? self.center
-
         let width = UIScreen.main.bounds.width
         let height = UIScreen.main.bounds.width
-
         DispatchQueue.main.async {
             let backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: width, height: height))
             self.setupIndicator(on: backgroundView, with: style, and: location)
@@ -124,11 +117,8 @@ extension UIView {
     }
 
     private func setupIndicator(on backgroundView: UIView, with style: UIActivityIndicatorView.Style, and location: CGPoint?) {
-
         let locationOnView = location ?? self.center
-
         backgroundView.tag = self.activityBackgroundTag
-
         let activityIndicator = UIActivityIndicatorView(style: style)
         activityIndicator.tag = self.activityIndicatorTag
         activityIndicator.center = locationOnView
@@ -138,9 +128,7 @@ extension UIView {
     }
 
     private func setupLabel(on view: UIView, title: String, and location: CGPoint) {
-
         let width = UIScreen.main.bounds.width
-
         let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: 100))
         titleLabel.textColor = .white
         titleLabel.text = title
@@ -150,15 +138,11 @@ extension UIView {
         let centerY = titleLabel.center.y
         titleLabel.center.y = centerY + 32
         view.addSubview(titleLabel)
-
     }
 
     func show(_ indicatorView: UIView) {
-
         guard let window = UIApplication.shared.keyWindow else { return }
-
         indicatorView.backgroundColor = .clear
-
         window.addSubview(indicatorView)
         UIView.animate(withDuration: 0.8, animations: {
             indicatorView.backgroundColor = UIColor.black.withAlphaComponent(0.7)
@@ -167,9 +151,7 @@ extension UIView {
 
     func obscure() {
         guard let window = UIApplication.shared.keyWindow else { return }
-
         self.backgroundColor = .clear
-
         window.addSubview(self)
         UIView.animate(withDuration: 0.3, animations: {
             self.backgroundColor = UIColor.black.withAlphaComponent(0.7)

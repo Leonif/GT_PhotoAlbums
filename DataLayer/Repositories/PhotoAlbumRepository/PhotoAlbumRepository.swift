@@ -27,24 +27,37 @@ public class PhotoAlbumListCloudRepository: PhotoAlbumRepository {
     public func testOperation(callback: @escaping (PhotoAlbumResult<[PhotoAlbumEntity]>) -> Void) {
         
         let operationQueue: OperationQueue = OperationQueue()
+//        operationQueue.maxConcurrentOperationCount = 1
         
+        let queueCompletionOperation = BlockOperation {
+            debugPrint("")
+        }
         
         let albumListRequest = GraphRequest(graphPath: "/me/albums",
                                             parameters: ["fields": "id, name, cover_photo"],
                                             httpMethod: .GET)
         
+        
         let photoAlbumOperation = PhotoAlbumOperation(request: albumListRequest)
+        let parseOperation = UnboxAlbumListOperation()
+        
         photoAlbumOperation.completionBlock = {
-            debugPrint(photoAlbumOperation.responseData ?? "nn")
+            guard let jsonObject = photoAlbumOperation.responseData?.dictionaryValue
+                else { return }
+            parseOperation.jsonObject = jsonObject
         }
         
-//        operationQueue.addOperations([photoAlbumOperation], waitUntilFinished: true)
-        operationQueue.addOperation(photoAlbumOperation)
+        parseOperation.completionBlock = {
+            debugPrint(parseOperation.photoAlbumList ?? "")
+        }
         
-//        parsingOperation.completionBlock = {
-//            onCompleted?(parsingOperation.movies ?? [])
-//        }
-//        parsingOperation.addDependency(networkingOperation)
+        parseOperation.addDependency(photoAlbumOperation)
+        queueCompletionOperation.addDependency(parseOperation)
+        
+        operationQueue.addOperations([photoAlbumOperation, parseOperation, queueCompletionOperation], waitUntilFinished: false)
+        
+
+        
     }
     
     

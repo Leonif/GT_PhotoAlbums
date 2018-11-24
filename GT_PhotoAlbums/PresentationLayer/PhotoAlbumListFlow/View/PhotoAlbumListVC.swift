@@ -48,7 +48,7 @@ class PhotoAlbumListVC: UIViewController, PhotoAlbumListView {
             case .update:
                 self?.collectionView.reloadData()
             case let .selected(item):
-                debugPrint(item.id)
+                self?.presenter.showPhotoAlbum(with: item)
             }
         }
     }

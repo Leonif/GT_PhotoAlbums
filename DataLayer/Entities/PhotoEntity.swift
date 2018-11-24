@@ -7,7 +7,7 @@
 //
 
 public struct PhotoEntity: Parceable {
-    let id: String?
+    public let id: String?
     public var link: String?
     
     public init(object: JSONObject) {

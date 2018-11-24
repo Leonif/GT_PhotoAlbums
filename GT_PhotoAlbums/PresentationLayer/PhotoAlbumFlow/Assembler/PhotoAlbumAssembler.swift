@@ -11,7 +11,7 @@ import DataLayer
 
 class PhotoAlbumAssembler {
     
-    func assemble() -> UIViewController {
+    func assemble() -> (view: BaseView, presenter: PhotoAlbumPresenter) {
         let view = PhotoAlbumVC.initFromStoryboard()
         let presenter = PhotoAlbumPresenterImpl()
         let adapter = PhotoAdapter<PhotoCell, PhotoViewItem>(columns: 4)
@@ -32,6 +32,6 @@ class PhotoAlbumAssembler {
         
         presenter.mapper = mapper
         
-        return view
+        return (view, presenter)
     }
 }

@@ -9,6 +9,7 @@
 import Foundation
 
 protocol PhotoAlbumPresenter: BasePresenter {
+    var album: PhotoAlbumViewItem! { get set }
     func showPhotoAlbum()
 }
 
@@ -17,6 +18,9 @@ class PhotoAlbumPresenterImpl: PhotoAlbumPresenter {
     weak var view: PhotoAlbumView!
     var router: PhotoAlbumRouter!
     var mapper: PhotoAlbumMapper!
+    var album: PhotoAlbumViewItem! {
+        didSet { view.update(title: album.name) }
+    }
     
     func viewDidLoad() {
         interactor.fetchAlbumList { (result) in

@@ -9,17 +9,49 @@
 import UIKit
 
 protocol PhotoAlbumView: BaseView {
+    func update(title: String)
 }
 
 class PhotoAlbumVC: UIViewController, PhotoAlbumView {
+    
+    @IBOutlet private var collectionView: UICollectionView!
+    @IBOutlet private var layout: UICollectionViewFlowLayout!
+    
     var presenter: PhotoAlbumPresenter!
     var interactor: PhotoAlbumInteractor!
     var adapter: PhotoAdapter<PhotoCell, PhotoViewItem>!
     
+    private func setupCollectionView() {
+        collectionView.register(PhotoCell.self)
+        collectionView.delegate = adapter
+        collectionView.dataSource = adapter
+        adapter.layout = layout
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.viewDidLoad()
+        setupCollectionView()
+        eventBinding()
     }
     
-    func close() { }
+    func update(title: String) {
+        navigationItem.title = "Album: \(title)"
+    }
+    
+    
+    private func eventBinding() {
+        adapter.eventHandler = { [weak self] event in
+            switch event {
+            case .update:
+                self?.collectionView.reloadData()
+            case let .selected(item):
+                debugPrint(item.id)
+            }
+        }
+    }
+    
+    func close() {
+        navigationController?.popViewController(animated: true)
+    }
 }

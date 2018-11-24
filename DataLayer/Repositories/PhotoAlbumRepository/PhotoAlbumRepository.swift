@@ -11,6 +11,8 @@ import FacebookCore
 public typealias JSONObject = [String: Any]
 
 public enum PhotoAlbumListRepositoryError: Error {
+    case unknown(String)
+    case facebookError(String)
 }
 
 public typealias PhotoAlbumResult<T> = ResultType<T, PhotoAlbumListRepositoryError>
@@ -36,8 +38,8 @@ public class PhotoAlbumListCloudRepository: PhotoAlbumRepository {
                 
                 let output: [PhotoAlbumEntity] = data.map { unbox(from: $0) }
                 callback(PhotoAlbumResult.success(output))
-            case let .failed(error):
-                debugPrint(error)
+            case .failed:
+                callback(PhotoAlbumResult.failure(.facebookError("Facebook access info is restricted ")))
             }
         }
     }
@@ -51,8 +53,8 @@ public class PhotoAlbumListCloudRepository: PhotoAlbumRepository {
             case let .success(response: response):
                 guard let link = response.dictionaryValue!["picture"] as? String else { fatalError() }
                 callback(PhotoAlbumResult.success(link))
-            case let .failed(error):
-                debugPrint(error)
+            case .failed:
+                callback(PhotoAlbumResult.failure(.facebookError("Facebook access info is restricted ")))
             }
         }
     }

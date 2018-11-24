@@ -29,12 +29,15 @@ class PhotoAlbumListPresenterImpl: PhotoAlbumListPresenter {
             case let .success(albumEntities):
                 let viewItems = self.mapper.transform(input: albumEntities)
                 self.view.update(albums: viewItems)
-            case let .failure(error):
-               self.view.onError(with: error.localizedDescription)
+            case let .failure(.facebookError(message)):
+                self.view.onError(with: message, completion: {
+                    self.view.close()
+                })
+            case let .failure(.unknown(message)):
+                self.view.onError(with: message)
             }
         }
     }
-    
     
     func showPhotoAlbum() {
         router.showAlbum()

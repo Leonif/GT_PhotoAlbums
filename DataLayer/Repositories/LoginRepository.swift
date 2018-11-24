@@ -7,6 +7,7 @@
 //
 
 import FacebookLogin
+import FacebookCore
 
 public protocol LoginRepository {
     func login(callback: @escaping (LoginRepositoryResult<Void>) -> Void)
@@ -29,6 +30,12 @@ public class LoginCloudRepository: LoginRepository {
     }
     
     public func login(callback: @escaping (LoginRepositoryResult<Void>) -> Void) {
+        
+        if AccessToken.current != nil {
+            callback(LoginRepositoryResult.success(()))
+            return
+        }
+        
         self.manager.logIn(readPermissions: [.publicProfile, .userPhotos], viewController: nil) { (result) in
             switch result {
             case .failed(let error):

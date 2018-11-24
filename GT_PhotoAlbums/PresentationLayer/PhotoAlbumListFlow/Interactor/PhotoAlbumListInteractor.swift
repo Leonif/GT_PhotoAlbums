@@ -26,11 +26,6 @@ class PhotoAlbumListInteractorImpl: PhotoAlbumListInteractor {
                 completion(PhotoAlbumResult.failure(error))
             }
         }
-        
-        
-//        repository.testOperation { (result) in
-//            debugPrint(result)
-//        }
     }
     
     private func fetchURLStrings(for albums: [PhotoAlbumEntity], callback: @escaping (PhotoAlbumResult<[PhotoAlbumEntity]>) -> Void) {

@@ -26,7 +26,6 @@ class AddLinksToAlbumsOperation: DAOperation {
         executing(true)
         
         guard let input = input else {
-//            fatalError()
             return
         }
         

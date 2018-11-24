@@ -54,5 +54,7 @@ class PhotoAlbumListVC: UIViewController, PhotoAlbumListView {
         }
     }
 
-    func close() { }
+    func close() {
+        dismiss(animated: true)
+    }
 }

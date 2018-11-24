@@ -11,6 +11,7 @@ import UIKit
 
 enum PhotoAlbumListAdapterEvent {
     case update
+    case selected(PhotoAlbumViewItem)
 }
 
 class PhotoAlbumListAdapter: NSObject, UICollectionViewDelegate, UICollectionViewDataSource {
@@ -22,8 +23,7 @@ class PhotoAlbumListAdapter: NSObject, UICollectionViewDelegate, UICollectionVie
     var layout: UICollectionViewFlowLayout? {
         didSet {
             let padding: CGFloat = 2
-            let columns: CGFloat = 3
-            
+            let columns: CGFloat = 2
             var width = UIScreen.main.bounds.size.width / columns
             width -= (padding * (columns - 1))
             layout?.itemSize = CGSize(width: width, height: width)
@@ -42,5 +42,11 @@ class PhotoAlbumListAdapter: NSObject, UICollectionViewDelegate, UICollectionVie
         let cell: PhotoAlbumCell = collectionView.dequeueReusableCell(for: indexPath)
         
         return cell
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let item = datasource[indexPath.row]
+        eventHandler?(.selected(item))
     }
 }

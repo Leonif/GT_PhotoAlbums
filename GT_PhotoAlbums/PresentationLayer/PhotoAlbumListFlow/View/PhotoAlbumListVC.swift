@@ -37,7 +37,10 @@ class PhotoAlbumListVC: UIViewController, PhotoAlbumListView {
         
         adapter.eventHandler = { [weak self] event in
             switch event {
-            case .update: self?.collectionView.reloadData()
+            case .update:
+                self?.collectionView.reloadData()
+            case let .selected(item):
+                debugPrint(item.id)
             }
         }
     }

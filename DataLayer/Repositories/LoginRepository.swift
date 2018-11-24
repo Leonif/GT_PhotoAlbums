@@ -17,9 +17,7 @@ public enum LoginRepositoryError: Error {
     case loginError(String)
 }
 
-
 public typealias LoginRepositoryResult<T> = ResultType<T, LoginRepositoryError>
-
 
 public class LoginCloudRepository: LoginRepository {
     

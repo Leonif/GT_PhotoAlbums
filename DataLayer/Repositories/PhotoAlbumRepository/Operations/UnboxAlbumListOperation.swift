@@ -15,9 +15,14 @@ class UnboxAlbumListOperation: Operation {
         super.init()
     }
     override func main() {
+        debugPrint("=============2. PARSING STARTED")
+        
         guard
             let dict = jsonObject,
-            let data = dict["data"] as? [JSONObject] else { return }
+            let data = dict["data"] as? [JSONObject] else {
+                //fatalError()
+                return
+        }
         photoAlbumList = data.map { unbox(from: $0) }
     }
 }

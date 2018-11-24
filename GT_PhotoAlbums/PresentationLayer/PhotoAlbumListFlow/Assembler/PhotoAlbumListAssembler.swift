@@ -15,16 +15,23 @@ class PhotoAlbumListAssembler {
     func assemble() -> UIViewController {
         let view = PhotoAlbumListVC.initFromStoryboard()
         let presenter = PhotoAlbumListPresenterImpl()
+        let adapter = PhotoAlbumListAdapter()
         view.presenter = presenter
+        view.adapter = adapter
         presenter.view = view
         
         let repository = PhotoAlbumListCloudRepository()
         let interactor = PhotoAlbumListInteractorImpl()
+        interactor.presenter = presenter
         interactor.repository = repository
         
         let router = PhotoAlbumListRouterImpl(vc: view)
         presenter.interactor = interactor
         presenter.router = router
+        
+        let mapper = PhotoAlbumListMapper()
+        
+        presenter.mapper = mapper
         
         return view
     }

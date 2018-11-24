@@ -18,47 +18,57 @@ public typealias PhotoAlbumResult<T> = ResultType<T, PhotoAlbumListRepositoryErr
 public protocol PhotoAlbumRepository {
     func fetchAlbumList(callback: @escaping (PhotoAlbumResult<[PhotoAlbumEntity]>) -> Void)
     func fetchPhotoWith(id: String, callback: @escaping (PhotoAlbumResult<PhotoEntity>) -> Void)
-    func testOperation(callback: @escaping (PhotoAlbumResult<[PhotoAlbumEntity]>) -> Void)
+//    func testOperation(callback: @escaping (PhotoAlbumResult<[PhotoAlbumEntity]>) -> Void)
 }
 
 public class PhotoAlbumListCloudRepository: PhotoAlbumRepository {
     public init() { }
     
-    public func testOperation(callback: @escaping (PhotoAlbumResult<[PhotoAlbumEntity]>) -> Void) {
-        
-        let operationQueue: OperationQueue = OperationQueue()
+//    public func testOperation(callback: @escaping (PhotoAlbumResult<[PhotoAlbumEntity]>) -> Void) {
+//        let operationQueue: OperationQueue = OperationQueue()
 //        operationQueue.maxConcurrentOperationCount = 1
-        
-        let queueCompletionOperation = BlockOperation {
-            debugPrint("")
-        }
-        
-        let albumListRequest = GraphRequest(graphPath: "/me/albums",
-                                            parameters: ["fields": "id, name, cover_photo"],
-                                            httpMethod: .GET)
-        
-        
-        let photoAlbumOperation = PhotoAlbumOperation(request: albumListRequest)
-        let parseOperation = UnboxAlbumListOperation()
-        
-        photoAlbumOperation.completionBlock = {
-            guard let jsonObject = photoAlbumOperation.responseData?.dictionaryValue
-                else { return }
-            parseOperation.jsonObject = jsonObject
-        }
-        
-        parseOperation.completionBlock = {
-            debugPrint(parseOperation.photoAlbumList ?? "")
-        }
-        
-        parseOperation.addDependency(photoAlbumOperation)
-        queueCompletionOperation.addDependency(parseOperation)
-        
-        operationQueue.addOperations([photoAlbumOperation, parseOperation, queueCompletionOperation], waitUntilFinished: false)
-        
-
-        
-    }
+//        
+////        let queueCompletionOperation = BlockOperation {
+////            onCompleted?(result)
+////        }
+//        
+//        let albumListRequest = GraphRequest(graphPath: "/me/albums",
+//                                            parameters: ["fields": "id, name, cover_photo"],
+//                                            httpMethod: .GET)
+//        let photoAlbumOperation = GraphRequestOperation(request: albumListRequest)
+//        let parseOperation = UnboxAlbumListOperation()
+//        let addlinkOpertion = AddLinksToAlbumsOperation()
+//        
+//        
+//        photoAlbumOperation.completionBlock = {
+//            debugPrint("1. GET ALBUMS COMPLETED===========\(photoAlbumOperation.responseData?.dictionaryValue)")
+//            guard let jsonObject = photoAlbumOperation.responseData?.dictionaryValue
+//                else { return }
+//            parseOperation.jsonObject = jsonObject
+//        }
+//        
+//        parseOperation.completionBlock = {
+//            debugPrint("2. PARSE COMPLETED===========\(parseOperation.photoAlbumList)")
+//            guard let albums = parseOperation.photoAlbumList else {
+//                return
+//            }
+//            addlinkOpertion.input = albums
+//            
+//        }
+//        
+////        addlinkOpertion.completionBlock = {
+////            debugPrint("3. ADD LINK COMPLETED =========================\(String(describing: addlinkOpertion.output))")
+////        }
+//        
+//        
+//        parseOperation.addDependency(photoAlbumOperation)
+////        addlinkOpertion.addDependency(parseOperation)
+//        
+//        operationQueue.addOperations([photoAlbumOperation, parseOperation], waitUntilFinished: false)
+//    }
+    
+    
+    
     
     
     
@@ -86,7 +96,7 @@ public class PhotoAlbumListCloudRepository: PhotoAlbumRepository {
             }
         }
     }
-        
+    
     public func fetchPhotoWith(id: String, callback: @escaping (PhotoAlbumResult<PhotoEntity>) -> Void) {
         let request = GraphRequest(graphPath: id,
                                    parameters: ["fields": "link"],

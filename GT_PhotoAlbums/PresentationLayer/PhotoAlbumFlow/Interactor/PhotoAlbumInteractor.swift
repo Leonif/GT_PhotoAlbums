@@ -22,13 +22,6 @@ class PhotoAlbumInteractorImpl: PhotoAlbumInteractor {
 //        }
         
         
-        repository.testOperation { (result) in
-            switch result {
-            case let .success(entities):
-                debugPrint(entities)
-            case let .failure(error):
-                debugPrint(error)
-            }
-        }
+        
     }
 }

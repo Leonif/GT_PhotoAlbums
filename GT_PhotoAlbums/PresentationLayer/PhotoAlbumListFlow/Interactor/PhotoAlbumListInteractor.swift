@@ -15,21 +15,22 @@ protocol PhotoAlbumListInteractor {
 class PhotoAlbumListInteractorImpl: PhotoAlbumListInteractor {
     
     var repository: PhotoAlbumRepository!
+    var presenter: PhotoAlbumListPresenter!
     
     func fetchAlbumList(completion: @escaping (PhotoAlbumResult<[PhotoAlbumEntity]>) -> Void) {
-//        repository.fetchAlbumList { (result) in
-//            switch result {
-//            case let .success(entities):
-//                debugPrint(entities)
-//            case let .failure(error):
-//                debugPrint(error)
-//            }
-//        }
-        
-        
-        repository.testOperation { (result) in
-            debugPrint(result)
+        repository.fetchAlbumList { (result) in
+            switch result {
+            case let .success(entities):
+                debugPrint(entities)
+            case let .failure(error):
+                debugPrint(error)
+            }
         }
+        
+        
+//        repository.testOperation { (result) in
+//            debugPrint(result)
+//        }
     }
 }
 

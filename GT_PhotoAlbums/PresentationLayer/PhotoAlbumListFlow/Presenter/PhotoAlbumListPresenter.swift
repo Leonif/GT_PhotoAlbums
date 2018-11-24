@@ -17,10 +17,18 @@ class PhotoAlbumListPresenterImpl: PhotoAlbumListPresenter {
     var interactor: PhotoAlbumListInteractor!
     weak var view: PhotoAlbumListView!
     var router: PhotoAlbumListRouter!
+    var mapper: PhotoAlbumListMapper!
     
     func viewDidLoad() {
-        interactor.fetchAlbumList { (result) in
-            debugPrint(result)
+        interactor.fetchAlbumList { [weak self] (result) in
+            guard let `self` = self else { return }
+            switch result {
+            case let .success(albumEntities):
+                let viewItems = self.mapper.transform(input: albumEntities)
+                self.view.update(albums: viewItems)
+            case let .failure(error):
+               self.view.onError(with: error.localizedDescription)
+            }
         }
     }
     

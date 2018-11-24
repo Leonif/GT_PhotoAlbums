@@ -8,7 +8,7 @@
 import FacebookCore
 
 
-class PhotoAlbumOperation: DAOperation {
+class GraphRequestOperation: DAOperation {
     private let request: GraphRequest
     
     var responseData: GraphRequest.Response?
@@ -18,6 +18,7 @@ class PhotoAlbumOperation: DAOperation {
     }
     
     override func main() {
+        debugPrint("=============1. READING STARTED")
         guard isCancelled == false else {
             finish(true)
             return

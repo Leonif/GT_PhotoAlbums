@@ -1,5 +1,5 @@
 //
-//  PhotoAlbumPresenter.swift
+//  PhotosPresenter.swift
 //  GT_PhotoAlbums
 //
 //  Created by Leonid Nifantyev on 11/23/18.
@@ -8,16 +8,16 @@
 
 import Foundation
 
-protocol PhotoAlbumPresenter: BasePresenter {
+protocol PhotosPresenter: BasePresenter {
     var album: PhotoAlbumViewItem! { get set }
-    func showPhotoAlbum()
+    func showPhoto(with urlString: String)
 }
 
-class PhotoAlbumPresenterImpl: PhotoAlbumPresenter {
-    var interactor: PhotoAlbumInteractor!
-    weak var view: PhotoAlbumView!
-    var router: PhotoAlbumRouter!
-    var mapper: PhotoAlbumMapper!
+class PhotosPresenterImpl: PhotosPresenter {
+    var interactor: PhotosInteractor!
+    weak var view: PhotosView!
+    var router: PhotosRouter!
+    var mapper: PhotosMapper!
     var album: PhotoAlbumViewItem! {
         didSet { view.update(title: album.name) }
     }
@@ -35,7 +35,7 @@ class PhotoAlbumPresenterImpl: PhotoAlbumPresenter {
         })
     }
     
-    func showPhotoAlbum() {
-        router.showAlbum()
+    func showPhoto(with urlString: String) {
+        router.showPhoto(with: urlString)
     }
 }

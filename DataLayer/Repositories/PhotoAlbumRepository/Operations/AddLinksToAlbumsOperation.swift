@@ -58,7 +58,7 @@ class AddLinksToAlbumsOperation: DAOperation {
         }
     }
     
-    public func fetchPhotoWith(id: String, callback: @escaping (PhotoAlbumResult<PhotoEntity>) -> Void) {
+    public func fetchPhotoWith(id: String, callback: @escaping (PhotoRepositoryResult<PhotoEntity>) -> Void) {
         let request = GraphRequest(graphPath: id,
                                    parameters: ["fields": "link"],
                                    httpMethod: .GET)

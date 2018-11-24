@@ -21,7 +21,7 @@ class PhotoAlbumListRouterImpl: PhotoAlbumListRouter {
     }
     
     func showAlbum(with album: PhotoAlbumViewItem) {
-        var module = PhotoAlbumAssembler().assemble()
+        var module = PhotosAssembler().assemble()
         module.presenter.album = album
         pushModule(fromModule: vc, toModule: module.view)
     }

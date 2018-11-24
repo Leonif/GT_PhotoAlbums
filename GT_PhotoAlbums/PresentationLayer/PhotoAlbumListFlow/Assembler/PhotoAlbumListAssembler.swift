@@ -15,12 +15,12 @@ class PhotoAlbumListAssembler {
     func assemble() -> UIViewController {
         let view = PhotoAlbumListVC.initFromStoryboard()
         let presenter = PhotoAlbumListPresenterImpl()
-        let adapter = PhotoAdapter<PhotoAlbumCell, PhotoAlbumViewItem>(columns: 2)
+        let adapter = PhotoGridAdapter<PhotoAlbumCell, PhotoAlbumViewItem>(columns: 2)
         view.presenter = presenter
         view.adapter = adapter
         presenter.view = view
         
-        let repository = PhotoAlbumListCloudRepository()
+        let repository = PhotoCloudRepository()
         let interactor = PhotoAlbumListInteractorImpl()
         interactor.presenter = presenter
         interactor.repository = repository

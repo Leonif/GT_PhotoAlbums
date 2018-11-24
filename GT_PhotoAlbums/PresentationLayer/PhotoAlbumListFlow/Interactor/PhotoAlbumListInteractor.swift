@@ -9,26 +9,26 @@
 import DataLayer
 
 protocol PhotoAlbumListInteractor {
-    func fetchAlbumList(completion: @escaping (PhotoAlbumResult<[PhotoAlbumEntity]>) -> Void)
+    func fetchAlbumList(completion: @escaping (PhotoRepositoryResult<[PhotoAlbumEntity]>) -> Void)
 }
 
 class PhotoAlbumListInteractorImpl: PhotoAlbumListInteractor {
     
-    var repository: PhotoAlbumRepository!
+    var repository: PhotoRepository!
     var presenter: PhotoAlbumListPresenter!
     
-    func fetchAlbumList(completion: @escaping (PhotoAlbumResult<[PhotoAlbumEntity]>) -> Void) {
+    func fetchAlbumList(completion: @escaping (PhotoRepositoryResult<[PhotoAlbumEntity]>) -> Void) {
         repository.fetchAlbumList { (result) in
             switch result {
             case let .success(entities):
                 self.fetchURLStrings(for: entities, callback: completion)
             case let .failure(error):
-                completion(PhotoAlbumResult.failure(error))
+                completion(PhotoRepositoryResult.failure(error))
             }
         }
     }
     
-    private func fetchURLStrings(for albums: [PhotoAlbumEntity], callback: @escaping (PhotoAlbumResult<[PhotoAlbumEntity]>) -> Void) {
+    private func fetchURLStrings(for albums: [PhotoAlbumEntity], callback: @escaping (PhotoRepositoryResult<[PhotoAlbumEntity]>) -> Void) {
         var output: [PhotoAlbumEntity] = []
 
         let group = DispatchGroup()
@@ -54,7 +54,7 @@ class PhotoAlbumListInteractorImpl: PhotoAlbumListInteractor {
         }
         
         group.notify(queue: .main) {
-            callback(PhotoAlbumResult.success(output))
+            callback(PhotoRepositoryResult.success(output))
         }
     }
 }

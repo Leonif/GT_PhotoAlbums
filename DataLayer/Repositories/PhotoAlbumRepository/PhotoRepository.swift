@@ -47,7 +47,8 @@ public class PhotoCloudRepository: PhotoRepository {
     
     public func fetchPhotoWith(id: String, callback: @escaping (PhotoRepositoryResult<String>) -> Void) {
         
-        let params: [String: Any] = [
+        let params: [String: Any] =
+            [
             "redirect": false,
             "height": "200",
             "type": "normal",

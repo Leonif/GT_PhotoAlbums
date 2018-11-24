@@ -20,12 +20,8 @@ public struct PhotoAlbumEntity: Parceable {
     public let id: String?
     public let name: String?
     public var link: String? {
-        get {
-            return coverPhoto?.link
-        }
-        set {
-            coverPhoto?.link = newValue
-        }
+        get { return coverPhoto?.link }
+        set { coverPhoto?.link = newValue }
     }
     
     public var coverPhotoId: String? {
@@ -34,11 +30,9 @@ public struct PhotoAlbumEntity: Parceable {
     
     var coverPhoto: PhotoEntity?
     
-    
     public init(object: JSONObject) {
         id = object["id"] as? String
         name = object["name"] as? String
-        
         
         guard let object = object["cover_photo"] as? JSONObject
             else {

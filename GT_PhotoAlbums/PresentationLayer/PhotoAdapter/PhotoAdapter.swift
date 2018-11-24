@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 enum PhotoAdapterEvent<Item> {
     case update
     case selected(Item)

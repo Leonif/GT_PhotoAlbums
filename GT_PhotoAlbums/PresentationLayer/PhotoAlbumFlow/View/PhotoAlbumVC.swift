@@ -10,6 +10,7 @@ import UIKit
 
 protocol PhotoAlbumView: BaseView {
     func update(title: String)
+    func update(photos: [PhotoViewItem])
 }
 
 class PhotoAlbumVC: UIViewController, PhotoAlbumView {
@@ -49,6 +50,10 @@ class PhotoAlbumVC: UIViewController, PhotoAlbumView {
                 debugPrint(item.id)
             }
         }
+    }
+    
+    func update(photos: [PhotoViewItem]) {
+        adapter.datasource = photos
     }
     
     func close() {

@@ -12,6 +12,6 @@ public struct PhotoEntity: Parceable {
     
     public init(object: JSONObject) {
         id = object["id"] as? String
-        link = nil
+        link = object["picture"] as? String
     }
 }

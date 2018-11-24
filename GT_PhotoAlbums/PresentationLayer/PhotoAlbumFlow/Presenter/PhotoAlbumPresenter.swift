@@ -23,9 +23,16 @@ class PhotoAlbumPresenterImpl: PhotoAlbumPresenter {
     }
     
     func viewDidLoad() {
-        interactor.fetchAlbumList { (result) in
-            debugPrint(result)
-        }
+        interactor.fetchPhotos(album: album.id, completion: { [weak self] (result) in
+            guard let `self` = self else { return }
+            switch result {
+            case let .success(entities):
+                let viewItems = self.mapper.transform(input: entities)
+                self.view.update(photos: viewItems)
+            case let .failure(error):
+                self.view.onError(with: error.localizedDescription)
+            }
+        })
     }
     
     func showPhotoAlbum() {

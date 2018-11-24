@@ -8,11 +8,10 @@
 
 import DataLayer
 
-
 struct PhotoAlbumViewItem {
     let id: String
     let name: String
-    var url: URL
+    var urlString: String?
 }
 class PhotoAlbumListMapper {
     
@@ -22,7 +21,7 @@ class PhotoAlbumListMapper {
             let link = input.link  else {
                 return nil
         }
-        return PhotoAlbumViewItem(id: id, name: name, url: URL(string: link)!)
+        return PhotoAlbumViewItem(id: id, name: name, urlString: link)
     }
     
     func transform(input: [PhotoAlbumEntity]) -> [PhotoAlbumViewItem] {

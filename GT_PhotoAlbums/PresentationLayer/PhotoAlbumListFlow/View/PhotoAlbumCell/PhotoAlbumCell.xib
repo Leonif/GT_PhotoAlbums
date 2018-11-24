@@ -54,6 +54,7 @@
             </constraints>
             <size key="customSize" width="148" height="170"/>
             <connections>
+                <outlet property="imageView" destination="lEe-AD-NWI" id="ES8-9j-Wyq"/>
                 <outlet property="titleLabel" destination="BUU-6v-JES" id="Yex-AO-wlx"/>
             </connections>
             <point key="canvasLocation" x="216" y="99.850074962518747"/>

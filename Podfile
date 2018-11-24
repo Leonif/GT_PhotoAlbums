@@ -5,11 +5,7 @@ target 'GT_PhotoAlbums' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
   
-#  # Pods for GT_PhotoAlbums
-#  pod 'FacebookCore'
-#  pod 'FacebookLogin'
-#  pod 'FacebookShare'
-
+  # Pods for GT_PhotoAlbums
 end
 
 target 'DataLayer' do

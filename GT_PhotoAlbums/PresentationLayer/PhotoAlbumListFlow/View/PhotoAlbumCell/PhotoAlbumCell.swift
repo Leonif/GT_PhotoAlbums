@@ -11,8 +11,10 @@ import UIKit
 class PhotoAlbumCell: UICollectionViewCell, NibLoadableReusable {
 
     @IBOutlet private var titleLabel: UILabel!
+    @IBOutlet private var imageView: UIImageView!
     
     func config(item: PhotoAlbumViewItem) {
         titleLabel.text = item.name
+        imageView.downloadImage(for: item.urlString!)
     }
 }

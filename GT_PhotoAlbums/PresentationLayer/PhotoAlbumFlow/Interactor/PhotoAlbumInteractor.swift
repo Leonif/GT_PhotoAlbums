@@ -9,16 +9,26 @@
 import DataLayer
 
 protocol PhotoAlbumInteractor {
-    func fetchAlbumList(completion: @escaping (PhotoAlbumListResult<Void>) -> Void)
+    func fetchAlbumList(completion: @escaping (PhotoAlbumResult<Void>) -> Void)
 }
 
 class PhotoAlbumInteractorImpl: PhotoAlbumInteractor {
     
-    var repository: PhotoAlbumListRepository!
+    var repository: PhotoAlbumRepository!
     
-    func fetchAlbumList(completion: @escaping (PhotoAlbumListResult<Void>) -> Void) {
-        repository.fetchAlbumList { (result) in
-            debugPrint(result)
+    func fetchAlbumList(completion: @escaping (PhotoAlbumResult<Void>) -> Void) {
+//        repository.fetchAlbumList { (result) in
+//            debugPrint(result)
+//        }
+        
+        
+        repository.testOperation { (result) in
+            switch result {
+            case let .success(entities):
+                debugPrint(entities)
+            case let .failure(error):
+                debugPrint(error)
+            }
         }
     }
 }

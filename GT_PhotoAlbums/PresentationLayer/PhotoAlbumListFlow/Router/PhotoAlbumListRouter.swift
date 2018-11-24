@@ -21,11 +21,8 @@ class PhotoAlbumListRouterImpl: PhotoAlbumListRouter {
     }
     
     func showAlbum() {
-        
-//        let albumView = PhotoAlbumListAssembler().assemble()
-//        
-//        let view = UINavigationController(rootViewController: albumView)
-//        
-//        presentController(fromModule: vc, to: view)
+        let albumView = PhotoAlbumListAssembler().assemble()
+        let view = UINavigationController(rootViewController: albumView)
+        presentController(fromModule: vc, to: view)
     }
 }

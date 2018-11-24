@@ -8,11 +8,11 @@
 
 import UIKit
 
-protocol PhotoAlbumRouter: BaseRouter {
-    func showAlbum()
+protocol PhotosRouter: BaseRouter {
+    func showPhoto(with urlString: String)
 }
 
-class PhotoAlbumRouterImpl: PhotoAlbumRouter {
+class PhotosRouterImpl: PhotosRouter {
     
     private var vc: BaseView!
     
@@ -20,7 +20,7 @@ class PhotoAlbumRouterImpl: PhotoAlbumRouter {
         self.vc = vc
     }
     
-    func showAlbum() {
+    func showPhoto(with urlString: String) {
         
 //        let albumView = PhotoAlbumListAssembler().assemble()
 //        

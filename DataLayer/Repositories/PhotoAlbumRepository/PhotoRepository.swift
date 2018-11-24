@@ -10,23 +10,23 @@ import FacebookCore
 
 public typealias JSONObject = [String: Any]
 
-public enum PhotoAlbumRepositoryError: Error {
+public enum PhotoRepositoryError: Error {
     case unknown(String)
     case facebookError(String)
 }
 
-public typealias PhotoAlbumResult<T> = ResultType<T, PhotoAlbumRepositoryError>
+public typealias PhotoRepositoryResult<T> = ResultType<T, PhotoRepositoryError>
 
-public protocol PhotoAlbumRepository {
-    func fetchAlbumList(callback: @escaping (PhotoAlbumResult<[PhotoAlbumEntity]>) -> Void)
-    func fetchPhotoWith(id: String, callback: @escaping (PhotoAlbumResult<String>) -> Void)
-    func fetchPhotos(album id: String, callback: @escaping (PhotoAlbumResult<[PhotoEntity]>) -> Void)
+public protocol PhotoRepository {
+    func fetchAlbumList(callback: @escaping (PhotoRepositoryResult<[PhotoAlbumEntity]>) -> Void)
+    func fetchPhotoWith(id: String, callback: @escaping (PhotoRepositoryResult<String>) -> Void)
+    func fetchPhotos(album id: String, callback: @escaping (PhotoRepositoryResult<[PhotoEntity]>) -> Void)
 }
 
-public class PhotoAlbumListCloudRepository: PhotoAlbumRepository {
+public class PhotoCloudRepository: PhotoRepository {
     public init() { }
     
-    public func fetchAlbumList(callback: @escaping (PhotoAlbumResult<[PhotoAlbumEntity]>) -> Void) {
+    public func fetchAlbumList(callback: @escaping (PhotoRepositoryResult<[PhotoAlbumEntity]>) -> Void) {
         let request = GraphRequest(graphPath: "/me/albums",
                                    parameters: ["fields": "id, name, cover_photo"],
                                    httpMethod: .GET)
@@ -38,14 +38,14 @@ public class PhotoAlbumListCloudRepository: PhotoAlbumRepository {
                     let data = dict["data"] as? [JSONObject] else { return }
                 
                 let output: [PhotoAlbumEntity] = data.map { unbox(from: $0) }
-                callback(PhotoAlbumResult.success(output))
+                callback(PhotoRepositoryResult.success(output))
             case .failed:
-                callback(PhotoAlbumResult.failure(.facebookError("Facebook access info is restricted ")))
+                callback(PhotoRepositoryResult.failure(.facebookError("Facebook access info is restricted ")))
             }
         }
     }
     
-    public func fetchPhotoWith(id: String, callback: @escaping (PhotoAlbumResult<String>) -> Void) {
+    public func fetchPhotoWith(id: String, callback: @escaping (PhotoRepositoryResult<String>) -> Void) {
         let request = GraphRequest(graphPath: id,
                                    parameters: ["fields": "link, picture.type(large)"],
                                     httpMethod: .GET)
@@ -53,17 +53,17 @@ public class PhotoAlbumListCloudRepository: PhotoAlbumRepository {
             switch result {
             case let .success(response: response):
                 guard let link = response.dictionaryValue!["picture"] as? String else { fatalError() }
-                callback(PhotoAlbumResult.success(link))
+                callback(PhotoRepositoryResult.success(link))
             case .failed:
-                callback(PhotoAlbumResult.failure(.facebookError("Facebook access info is restricted ")))
+                callback(PhotoRepositoryResult.failure(.facebookError("Facebook access info is restricted ")))
             }
         }
     }
     
-    public func fetchPhotos(album id: String, callback: @escaping (PhotoAlbumResult<[PhotoEntity]>) -> Void) {
+    public func fetchPhotos(album id: String, callback: @escaping (PhotoRepositoryResult<[PhotoEntity]>) -> Void) {
         
         let request = GraphRequest(graphPath: "\(id)/photos",
-                                            parameters: ["fields": "link, picture.type(large)"],
+                                            parameters: ["fields": "link, picture.type(small)"],
                                             httpMethod: .GET)
         request.start { (response, result) in
             switch result {
@@ -73,9 +73,9 @@ public class PhotoAlbumListCloudRepository: PhotoAlbumRepository {
                     let data = dict["data"] as? [JSONObject] else { return }
                 
                 let output: [PhotoEntity] = data.map { unbox(from: $0) }
-                callback(PhotoAlbumResult.success(output))
+                callback(PhotoRepositoryResult.success(output))
             case .failed:
-                callback(PhotoAlbumResult.failure(.facebookError("Facebook access info is restricted ")))
+                callback(PhotoRepositoryResult.failure(.facebookError("Facebook access info is restricted ")))
             }
         }
     }

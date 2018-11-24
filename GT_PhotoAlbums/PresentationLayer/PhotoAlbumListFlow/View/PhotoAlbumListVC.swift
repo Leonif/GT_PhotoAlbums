@@ -19,7 +19,7 @@ class PhotoAlbumListVC: UIViewController, PhotoAlbumListView {
     
     var presenter: PhotoAlbumListPresenter!
     var interactor: PhotoAlbumListInteractor!
-    var adapter: PhotoAdapter<PhotoAlbumCell, PhotoAlbumViewItem>!
+    var adapter: PhotoGridAdapter<PhotoAlbumCell, PhotoAlbumViewItem>!
     
     private func setupCollectionView() {
         collectionView.register(PhotoAlbumCell.self)

@@ -8,19 +8,19 @@
 
 import UIKit
 
-protocol PhotoAlbumView: BaseView {
+protocol PhotosView: BaseView {
     func update(title: String)
     func update(photos: [PhotoViewItem])
 }
 
-class PhotoAlbumVC: UIViewController, PhotoAlbumView {
+class PhotosVC: UIViewController, PhotosView {
     
     @IBOutlet private var collectionView: UICollectionView!
     @IBOutlet private var layout: UICollectionViewFlowLayout!
     
-    var presenter: PhotoAlbumPresenter!
-    var interactor: PhotoAlbumInteractor!
-    var adapter: PhotoAdapter<PhotoCell, PhotoViewItem>!
+    var presenter: PhotosPresenter!
+    var interactor: PhotosInteractor!
+    var adapter: PhotoGridAdapter<PhotoCell, PhotoViewItem>!
     
     private func setupCollectionView() {
         collectionView.register(PhotoCell.self)
@@ -47,7 +47,7 @@ class PhotoAlbumVC: UIViewController, PhotoAlbumView {
             case .update:
                 self?.collectionView.reloadData()
             case let .selected(item):
-                debugPrint(item.id)
+                self?.presenter.showPhoto(with: item.urlString)
             }
         }
     }

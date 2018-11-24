@@ -1,5 +1,5 @@
 //
-//  PhotoAlbumMapper.swift
+//  PhotosMapper.swift
 //  GT_PhotoAlbums
 //
 //  Created by Leonid Nifantyev on 11/24/18.
@@ -8,7 +8,7 @@
 
 import DataLayer
 
-class PhotoAlbumMapper {
+class PhotosMapper {
     
     func transform(input: PhotoEntity) -> PhotoViewItem? {
         guard

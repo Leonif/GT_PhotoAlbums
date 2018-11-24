@@ -46,8 +46,17 @@ public class PhotoCloudRepository: PhotoRepository {
     }
     
     public func fetchPhotoWith(id: String, callback: @escaping (PhotoRepositoryResult<String>) -> Void) {
+        
+        let params: [String: Any] = [
+            "redirect": false,
+            "height": "200",
+            "type": "normal",
+            "width": "200",
+            "fields": "link, picture"]
+//        ["fields": "link, picture.type(large)"]
+        
         let request = GraphRequest(graphPath: id,
-                                   parameters: ["fields": "link, picture.type(large)"],
+                                   parameters: params,
                                     httpMethod: .GET)
         request.start { (response, result) in
             switch result {
@@ -63,7 +72,7 @@ public class PhotoCloudRepository: PhotoRepository {
     public func fetchPhotos(album id: String, callback: @escaping (PhotoRepositoryResult<[PhotoEntity]>) -> Void) {
         
         let request = GraphRequest(graphPath: "\(id)/photos",
-                                            parameters: ["fields": "link, picture.type(small)"],
+                                            parameters: ["fields": "link, picture"],
                                             httpMethod: .GET)
         request.start { (response, result) in
             switch result {

@@ -29,6 +29,8 @@ class PhotosPresenterImpl: PhotosPresenter {
             case let .success(entities):
                 let viewItems = self.mapper.transform(input: entities)
                 self.view.update(photos: viewItems)
+            case let .failure(.facebookError(message)):
+                self.view.onError(with: message)
             case let .failure(error):
                 self.view.onError(with: error.localizedDescription)
             }

@@ -17,7 +17,7 @@ public typealias PhotoAlbumResult<T> = ResultType<T, PhotoAlbumListRepositoryErr
 
 public protocol PhotoAlbumRepository {
     func fetchAlbumList(callback: @escaping (PhotoAlbumResult<[PhotoAlbumEntity]>) -> Void)
-    func fetchPhotoWith(id: String, callback: @escaping (PhotoAlbumResult<PhotoEntity>) -> Void)
+    func fetchPhotoWith(id: String, callback: @escaping (PhotoAlbumResult<String>) -> Void)
 }
 
 public class PhotoAlbumListCloudRepository: PhotoAlbumRepository {
@@ -42,14 +42,15 @@ public class PhotoAlbumListCloudRepository: PhotoAlbumRepository {
         }
     }
     
-    public func fetchPhotoWith(id: String, callback: @escaping (PhotoAlbumResult<PhotoEntity>) -> Void) {
+    public func fetchPhotoWith(id: String, callback: @escaping (PhotoAlbumResult<String>) -> Void) {
         let request = GraphRequest(graphPath: id,
-                                   parameters: ["fields": "link"],
+                                   parameters: ["fields": "link, picture.type(large)"],
                                     httpMethod: .GET)
         request.start { (response, result) in
             switch result {
             case let .success(response: response):
-                debugPrint(response)
+                guard let link = response.dictionaryValue!["picture"] as? String else { fatalError() }
+                callback(PhotoAlbumResult.success(link))
             case let .failed(error):
                 debugPrint(error)
             }

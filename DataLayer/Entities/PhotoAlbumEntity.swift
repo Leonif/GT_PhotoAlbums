@@ -12,8 +12,7 @@ public struct PhotoEntity: Parceable {
     
     public init(object: JSONObject) {
         id = object["id"] as? String
-//        link = nil
-        link = "http://mirpozitiva.ru/uploads/posts/2016-09/1474011127_01.jpg"
+        link = nil
     }
 }
 
@@ -21,8 +20,18 @@ public struct PhotoAlbumEntity: Parceable {
     public let id: String?
     public let name: String?
     public var link: String? {
-        return coverPhoto?.link
+        get {
+            return coverPhoto?.link
+        }
+        set {
+            coverPhoto?.link = newValue
+        }
     }
+    
+    public var coverPhotoId: String? {
+        return coverPhoto?.id
+    }
+    
     var coverPhoto: PhotoEntity?
     
     

@@ -21,7 +21,7 @@ class PhotoAlbumListInteractorImpl: PhotoAlbumListInteractor {
         repository.fetchAlbumList { (result) in
             switch result {
             case let .success(entities):
-                completion(PhotoAlbumResult.success(entities))
+                self.fetchURLStrings(for: entities, callback: completion)
             case let .failure(error):
                 completion(PhotoAlbumResult.failure(error))
             }
@@ -31,6 +31,35 @@ class PhotoAlbumListInteractorImpl: PhotoAlbumListInteractor {
 //        repository.testOperation { (result) in
 //            debugPrint(result)
 //        }
+    }
+    
+    private func fetchURLStrings(for albums: [PhotoAlbumEntity], callback: @escaping (PhotoAlbumResult<[PhotoAlbumEntity]>) -> Void) {
+        var output: [PhotoAlbumEntity] = []
+
+        let group = DispatchGroup()
+
+        for album in albums {
+            group.enter()
+            guard let id = album.coverPhotoId else {
+                group.leave()
+                continue
+            }
+            
+            self.repository.fetchPhotoWith(id: id, callback: { (result) in
+                switch result {
+                case let .success(urlString):
+                    var updated = album
+                    updated.link = urlString
+                    output.append(updated)
+                case .failure: fatalError()
+                }
+                group.leave()
+            })
+        }
+        
+        group.notify(queue: .main) {
+            callback(PhotoAlbumResult.success(output))
+        }
     }
 }
 

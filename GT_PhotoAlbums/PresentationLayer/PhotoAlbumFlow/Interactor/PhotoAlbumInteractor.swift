@@ -9,7 +9,7 @@
 import DataLayer
 
 protocol PhotoAlbumInteractor {
-    func fetchAlbumList(completion: @escaping (PhotoAlbumResult<Void>) -> Void)
+    func fetchPhotos(album id: String, completion: @escaping (PhotoAlbumResult<[PhotoEntity]>) -> Void)
 }
 
 class PhotoAlbumInteractorImpl: PhotoAlbumInteractor {
@@ -17,12 +17,14 @@ class PhotoAlbumInteractorImpl: PhotoAlbumInteractor {
     var repository: PhotoAlbumRepository!
     var presenter: PhotoAlbumPresenter!
     
-    func fetchAlbumList(completion: @escaping (PhotoAlbumResult<Void>) -> Void) {
-//        repository.fetchAlbumList { (result) in
-//            debugPrint(result)
-//        }
-        
-        
-        
+    func fetchPhotos(album id: String, completion: @escaping (PhotoAlbumResult<[PhotoEntity]>) -> Void) {
+        repository.fetchPhotos(album: id) { (result) in
+            switch result {
+            case let .success(entities):
+                completion(PhotoAlbumResult.success(entities))
+            case let .failure(error):
+                completion(PhotoAlbumResult.failure(error))
+            }
+        }
     }
 }

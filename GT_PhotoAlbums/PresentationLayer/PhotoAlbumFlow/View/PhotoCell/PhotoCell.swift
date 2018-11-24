@@ -10,10 +10,11 @@ import UIKit
 
 class PhotoCell: UICollectionViewCell, NibLoadableReusable, Configurable {
 
-   typealias Item = PhotoViewItem
+    typealias Item = PhotoViewItem
+    @IBOutlet private var imageView: UIImageView!
     
     func config(item: PhotoViewItem) {
-        
+        imageView.downloadImage(for: item.urlString)
     }
 
 }

@@ -18,10 +18,17 @@ class PhotoAlbumListAdapter: NSObject, UICollectionViewDelegate, UICollectionVie
     var datasource: [PhotoAlbumViewItem] = [] {
         didSet { eventHandler?(.update) }
     }
+    
+    var layout: UICollectionViewFlowLayout? {
+        didSet {
+            layout?.itemSize = CGSize(width: 100, height: 100)
+        }
+    }
+    
     var eventHandler: EventHandler<PhotoAlbumListAdapterEvent>?
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return datasource.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

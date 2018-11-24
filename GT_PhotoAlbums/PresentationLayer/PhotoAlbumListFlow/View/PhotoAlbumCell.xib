@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="148" height="170"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lEe-AD-NWI">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cat" translatesAutoresizingMaskIntoConstraints="NO" id="lEe-AD-NWI">
                         <rect key="frame" x="0.0" y="0.0" width="148" height="170"/>
                     </imageView>
                 </subviews>
@@ -35,4 +35,7 @@
             <point key="canvasLocation" x="216" y="99.850074962518747"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="cat" width="525" height="745"/>
+    </resources>
 </document>

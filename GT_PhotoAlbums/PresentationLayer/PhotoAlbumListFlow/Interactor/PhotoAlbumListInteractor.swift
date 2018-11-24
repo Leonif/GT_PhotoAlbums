@@ -21,9 +21,9 @@ class PhotoAlbumListInteractorImpl: PhotoAlbumListInteractor {
         repository.fetchAlbumList { (result) in
             switch result {
             case let .success(entities):
-                debugPrint(entities)
+                completion(PhotoAlbumResult.success(entities))
             case let .failure(error):
-                debugPrint(error)
+                completion(PhotoAlbumResult.failure(error))
             }
         }
         

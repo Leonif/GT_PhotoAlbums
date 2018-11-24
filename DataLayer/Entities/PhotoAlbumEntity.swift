@@ -12,7 +12,8 @@ public struct PhotoEntity: Parceable {
     
     public init(object: JSONObject) {
         id = object["id"] as? String
-        link = nil
+//        link = nil
+        link = "https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwj33s-fh-3eAhUGjCwKHdo0BfcQjRx6BAgBEAU&url=https%3A%2F%2Fmirpozitiva.ru%2Fphoto%2F1315-kartinki-kotiat-smeshnye.html&psig=AOvVaw3Pz93TmPFKOBnj_-xvTYbQ&ust=1543149833853604"
     }
 }
 

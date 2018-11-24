@@ -13,14 +13,20 @@ protocol PhotoAlbumListView: BaseView {
 }
 
 class PhotoAlbumListVC: UIViewController, PhotoAlbumListView {
+    
+    @IBOutlet private var collectionView: UICollectionView!
+    @IBOutlet private var layout: UICollectionViewFlowLayout!
+    
     var presenter: PhotoAlbumListPresenter!
     var interactor: PhotoAlbumListInteractor!
     var adapter: PhotoAlbumListAdapter!
-    @IBOutlet private var collectionView: UICollectionView!
+    
     
     fileprivate func setupCollectionView() {
+        collectionView.register(PhotoAlbumCell.self)
         collectionView.delegate = adapter
         collectionView.dataSource = adapter
+        adapter.layout = layout
     }
     
     override func viewDidLoad() {

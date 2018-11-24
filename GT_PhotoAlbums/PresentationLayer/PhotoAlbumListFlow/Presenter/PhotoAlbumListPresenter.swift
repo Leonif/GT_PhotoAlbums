@@ -12,6 +12,9 @@ protocol PhotoAlbumListPresenter: BasePresenter {
     func showPhotoAlbum()
 }
 
+protocol PhotoAlbumListPresenterOutput {
+    
+}
 
 class PhotoAlbumListPresenterImpl: PhotoAlbumListPresenter {
     var interactor: PhotoAlbumListInteractor!

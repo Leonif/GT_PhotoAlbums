@@ -21,7 +21,14 @@ class PhotoAlbumListAdapter: NSObject, UICollectionViewDelegate, UICollectionVie
     
     var layout: UICollectionViewFlowLayout? {
         didSet {
-            layout?.itemSize = CGSize(width: 100, height: 100)
+            let padding: CGFloat = 2
+            let columns: CGFloat = 3
+            
+            var width = UIScreen.main.bounds.size.width / columns
+            width -= (padding * (columns - 1))
+            layout?.itemSize = CGSize(width: width, height: width)
+            layout?.minimumLineSpacing = padding
+            layout?.minimumInteritemSpacing = padding
         }
     }
     

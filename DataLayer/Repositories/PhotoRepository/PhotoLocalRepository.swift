@@ -20,7 +20,10 @@ public class PhotoLocalRepository: PhotoRepository {
     public func fetchAlbumList(callback: @escaping (PhotoRepositoryResult<[PhotoAlbumEntity]>) -> Void) {
         let albums: [CDPhotoAlbum] = pManager.fetchAllRecords()
         
-        let entities = albums.map { PhotoAlbumEntity(id: $0.id!, name: $0.name!, coverImage: #imageLiteral(resourceName: "cat")) }
+        let entities: [PhotoAlbumEntity]  = albums.map { (album: CDPhotoAlbum) in
+            let image = UIImage(contentsOfFile: album.filepath ?? "")
+            return PhotoAlbumEntity(id: album.id!, name: album.name!, coverImage: image ?? UIImage())
+        }
         callback(PhotoRepositoryResult.success(entities))
     }
     

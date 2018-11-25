@@ -25,7 +25,7 @@ public class PhotoRepositoryImpl: PhotoRepository {
         self.current.fetchAlbumList { [weak self] (result) in
             switch result {
             case let .success(entities):
-                self?.fetchURLStrings(for: entities, callback: { [weak self] (result) in
+                self?.fetchImages(for: entities, callback: { [weak self] (result) in
                     switch result {
                     case let .success(albums):
                         self?.cashing(albums: albums)
@@ -43,7 +43,7 @@ public class PhotoRepositoryImpl: PhotoRepository {
         saveAlbumList(albumList: albums)
     }
     
-    private func fetchURLStrings(for albums: [PhotoAlbumEntity], callback: @escaping (PhotoRepositoryResult<[PhotoAlbumEntity]>) -> Void) {
+    private func fetchImages(for albums: [PhotoAlbumEntity], callback: @escaping (PhotoRepositoryResult<[PhotoAlbumEntity]>) -> Void) {
         var output: [PhotoAlbumEntity] = []
         
         let group = DispatchGroup()
@@ -56,15 +56,21 @@ public class PhotoRepositoryImpl: PhotoRepository {
                 continue
             }
             
-            self.fetchPhotoWith(id: id, callback: { (result) in
+            self.fetchPhotoWith(id: id, callback: { [weak self] (result) in
                 switch result {
                 case let .success(urlString):
                     var updated = album
                     updated.link = urlString
-                    output.append(updated)
-                case let .failure(error): callback(PhotoRepositoryResult.failure(error))
+                    self?.downloadImage(urlString: urlString, callback: { (image) in
+                        updated.coverImage = image
+                        output.append(updated)
+                        group.leave()
+                    })
+                    
+                case let .failure(error):
+                    callback(PhotoRepositoryResult.failure(error))
                 }
-                group.leave()
+               
             })
         }
         

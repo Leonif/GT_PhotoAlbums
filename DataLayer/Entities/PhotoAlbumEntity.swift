@@ -9,7 +9,7 @@
 public struct PhotoAlbumEntity: Parceable {
     public let id: String?
     public let name: String?
-    public let coverImage: UIImage?
+    public var coverImage: UIImage?
     public var link: String? {
         get { return coverPhoto?.link }
         set { coverPhoto?.link = newValue }

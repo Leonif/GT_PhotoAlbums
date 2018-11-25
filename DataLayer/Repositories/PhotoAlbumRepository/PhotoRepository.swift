@@ -35,7 +35,10 @@ public class PhotoCloudRepository: PhotoRepository {
             case let .success(response: response):
                 guard
                     let dict = response.dictionaryValue,
-                    let data = dict["data"] as? [JSONObject] else { return }
+                    let data = dict["data"] as? [JSONObject] else {
+                        callback(PhotoRepositoryResult.failure(.unknown("Some unpredictable happen 💩")))
+                        return
+                }
                 
                 let output: [PhotoAlbumEntity] = data.map { unbox(from: $0) }
                 callback(PhotoRepositoryResult.success(output))
@@ -46,15 +49,7 @@ public class PhotoCloudRepository: PhotoRepository {
     }
     
     public func fetchPhotoWith(id: String, callback: @escaping (PhotoRepositoryResult<String>) -> Void) {
-        
-        let params: [String: Any] =
-            [
-            "redirect": false,
-            "height": "200",
-            "type": "normal",
-            "width": "200",
-            "fields": "link, picture"]
-//        ["fields": "link, picture.type(large)"]
+        let params: [String: Any] = ["fields": "link, picture.type(large)"]
         
         let request = GraphRequest(graphPath: id,
                                    parameters: params,
@@ -71,9 +66,10 @@ public class PhotoCloudRepository: PhotoRepository {
     }
     
     public func fetchPhotos(album id: String, callback: @escaping (PhotoRepositoryResult<[PhotoEntity]>) -> Void) {
+        let params: [String: Any] = ["fields": "link, picture"]
         
         let request = GraphRequest(graphPath: "\(id)/photos",
-                                            parameters: ["fields": "link, picture"],
+                                            parameters: params,
                                             httpMethod: .GET)
         request.start { (response, result) in
             switch result {

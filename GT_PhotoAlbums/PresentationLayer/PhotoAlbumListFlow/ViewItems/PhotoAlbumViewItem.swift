@@ -6,8 +6,10 @@
 //  Copyright © 2018 Leonid Nifantyev. All rights reserved.
 //
 
+import UIKit
+
 struct PhotoAlbumViewItem {
     let id: String
     let name: String
-    var urlString: String?
+    var image: UIImage
 }

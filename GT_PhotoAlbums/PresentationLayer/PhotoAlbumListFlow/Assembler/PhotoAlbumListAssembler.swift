@@ -23,7 +23,7 @@ class PhotoAlbumListAssembler {
         view.adapter = adapter
         presenter.view = view
         
-        let repository = PhotoRepositoryImpl(local: PhotoLocalRepository(),
+        let repository = PhotoRepositoryImpl(local: PhotoLocalRepository(pManager: persistanceManager),
                                              cloud: PhotoCloudRepository(),
                                              pManager: persistanceManager)
         let interactor = PhotoAlbumListInteractorImpl()

@@ -18,6 +18,7 @@
 		7913852421A8B5C500225F0F /* PhotosVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7913851C21A8B5C500225F0F /* PhotosVC.storyboard */; };
 		7913852521A8B5C500225F0F /* PhotosInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7913851E21A8B5C500225F0F /* PhotosInteractor.swift */; };
 		7913852621A8B5C500225F0F /* PhotosRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7913852021A8B5C500225F0F /* PhotosRouter.swift */; };
+		7916EEBE21AB03DB005BBA4B /* CoreDataCash.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 79734A6F21AAC38C00F49A45 /* CoreDataCash.xcdatamodeld */; };
 		7968848821A9C35C002032F8 /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7968848721A9C35C002032F8 /* UICollectionView+Extensions.swift */; };
 		7968848A21A9C9FF002032F8 /* PhotoAlbumViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7968848921A9C9FF002032F8 /* PhotoAlbumViewItem.swift */; };
 		7968848D21A9CA61002032F8 /* PhotosMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7968848C21A9CA61002032F8 /* PhotosMapper.swift */; };
@@ -790,6 +791,7 @@
 				79CF50C121A5D9500039096D /* UIStoryboard+Identifiable.swift in Sources */,
 				79C98F7021A960C000B0342E /* PhotoAlbumCell.swift in Sources */,
 				79C98F7521A9631300B0342E /* PhotoGridAdapter.swift in Sources */,
+				7916EEBE21AB03DB005BBA4B /* CoreDataCash.xcdatamodeld in Sources */,
 				79CF50D921A876380039096D /* PhotoAlbumListRouter.swift in Sources */,
 				79CF50B521A5D3DD0039096D /* LoginInteractor.swift in Sources */,
 				7968848821A9C35C002032F8 /* UICollectionView+Extensions.swift in Sources */,

@@ -22,7 +22,55 @@ public class PhotoRepositoryImpl: PhotoRepository {
     }
     
     public func fetchAlbumList(callback: @escaping (PhotoRepositoryResult<[PhotoAlbumEntity]>) -> Void) {
-        self.current.fetchAlbumList(callback: callback)
+        self.current.fetchAlbumList { [weak self] (result) in
+            switch result {
+            case let .success(entities):
+                self?.fetchURLStrings(for: entities, callback: { [weak self] (result) in
+                    switch result {
+                    case let .success(albums):
+                        self?.cashing(albums: albums)
+                        callback(PhotoRepositoryResult.success(albums))
+                    case .failure: fatalError("")
+                    }
+                })
+            case .failure:
+                self?.local.fetchAlbumList(callback: callback)
+            }
+        }
+    }
+    
+    private func cashing(albums: [PhotoAlbumEntity]) {
+        saveAlbumList(albumList: albums)
+    }
+    
+    private func fetchURLStrings(for albums: [PhotoAlbumEntity], callback: @escaping (PhotoRepositoryResult<[PhotoAlbumEntity]>) -> Void) {
+        var output: [PhotoAlbumEntity] = []
+        
+        let group = DispatchGroup()
+        
+        for album in albums {
+            group.enter()
+            guard let id = album.coverPhotoId else {
+                output.append(album)
+                group.leave()
+                continue
+            }
+            
+            self.fetchPhotoWith(id: id, callback: { (result) in
+                switch result {
+                case let .success(urlString):
+                    var updated = album
+                    updated.link = urlString
+                    output.append(updated)
+                case let .failure(error): callback(PhotoRepositoryResult.failure(error))
+                }
+                group.leave()
+            })
+        }
+        
+        group.notify(queue: .main) {
+            callback(PhotoRepositoryResult.success(output))
+        }
     }
     
     public func fetchPhotoWith(id: String, callback: @escaping (PhotoRepositoryResult<String>) -> Void) {
@@ -31,5 +79,45 @@ public class PhotoRepositoryImpl: PhotoRepository {
     
     public func fetchPhotos(album id: String, callback: @escaping (PhotoRepositoryResult<[PhotoEntity]>) -> Void) {
         self.current.fetchPhotos(album: id, callback: callback)
+    }
+    
+    func saveAlbumList(albumList: [PhotoAlbumEntity]) {
+        for album in albumList {
+            if let _: CDPhotoAlbum = pManager.fetchRecord(with: album.id!) {
+                continue
+            }
+            saveAlbum(album: album)
+        }
+    }
+    
+    func saveAlbum(album: PhotoAlbumEntity, completion: ((Bool) -> Void)? = nil) {
+        var filePath: String?
+        
+        if let coverImage = album.coverImage {
+             filePath = self.pManager.saveImage(image: coverImage)
+        }
+        
+        self.pManager.saveRecord(saveCode: { (albumObject: CDPhotoAlbum) in
+            albumObject.id = album.id
+            albumObject.name = album.name
+            albumObject.filepath = filePath
+        }) { (success) in
+            completion?(success)
+        }
+    }
+    
+    private func downloadImage(urlString: String, callback: @escaping (UIImage?) -> Void) {
+        let url = URL(string: urlString)!
+        
+        URLSession.shared.dataTask(with: url) { (data, responce, error) in
+            guard error == nil else {
+                callback(nil)
+                return
+            }
+            DispatchQueue.main.async {
+                
+                let image = UIImage(data: data!)
+                callback(image)
+            }}.resume()
     }
 }

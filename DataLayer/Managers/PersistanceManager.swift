@@ -14,7 +14,7 @@ public typealias Persistanble = NSManagedObject
 
 public protocol PersistanceManager {
     func fetchAllRecords<Entity: Persistanble>() -> [Entity]
-    func fetchRecord<Entity: Persistanble>(with id: String) -> Entity
+    func fetchRecord<Entity: Persistanble>(with id: String) -> Entity?
     func saveRecord<Entity: Persistanble>(saveCode: @escaping (Entity) -> Void, completion: @escaping (Bool) -> Void)
     func removeRecord<Entity: Persistanble>(for entity: Entity)
     func saveImage(image: UIImage) -> String
@@ -26,12 +26,8 @@ public class PersistanceManagerImpl: PersistanceManager {
         MagicalRecord.setupCoreDataStack(withStoreNamed: "CoreDataCash")
     }
     
-    public func fetchRecord<Entity>(with id: String) -> Entity where Entity : Persistanble {
-        if let resultObject = Entity.mr_findFirst(byAttribute: "id", withValue: id) {
-            return resultObject
-        } else {
-            return Entity()
-        }
+    public func fetchRecord<Entity>(with id: String) -> Entity? where Entity : Persistanble {
+        return Entity.mr_findFirst(byAttribute: "id", withValue: id)
     }
     
     public func fetchAllRecords<Entity>() -> [Entity] where Entity : Persistanble {

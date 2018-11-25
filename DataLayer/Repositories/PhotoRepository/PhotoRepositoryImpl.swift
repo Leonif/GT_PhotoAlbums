@@ -8,8 +8,6 @@
 
 
 public class PhotoRepositoryImpl: PhotoRepository {
-    
-    private var current: PhotoRepository
     private var local: PhotoRepository
     private var cloud: PhotoRepository
     private var pManager: PersistanceManager
@@ -17,12 +15,11 @@ public class PhotoRepositoryImpl: PhotoRepository {
     public init(local: PhotoRepository, cloud: PhotoRepository, pManager: PersistanceManager) {
         self.local = local
         self.cloud = cloud
-        self.current = self.cloud
         self.pManager = pManager
     }
     
     public func fetchAlbumList(callback: @escaping (PhotoRepositoryResult<[PhotoAlbumEntity]>) -> Void) {
-        self.current.fetchAlbumList { [weak self] (result) in
+        self.cloud.fetchAlbumList { [weak self] (result) in
             switch result {
             case let .success(entities):
                 self?.fetchImages(for: entities, callback: { [weak self] (result) in
@@ -81,11 +78,11 @@ public class PhotoRepositoryImpl: PhotoRepository {
     }
     
     public func fetchPhotoWith(id: String, callback: @escaping (PhotoRepositoryResult<String>) -> Void) {
-        self.current.fetchPhotoWith(id: id, callback: callback)
+        self.cloud.fetchPhotoWith(id: id, callback: callback)
     }
     
     public func fetchPhotos(album id: String, callback: @escaping (PhotoRepositoryResult<[PhotoEntity]>) -> Void) {
-        self.current.fetchPhotos(album: id, callback: callback)
+        self.cloud.fetchPhotos(album: id, callback: callback)
     }
     
     func saveAlbumList(albumList: [PhotoAlbumEntity]) {

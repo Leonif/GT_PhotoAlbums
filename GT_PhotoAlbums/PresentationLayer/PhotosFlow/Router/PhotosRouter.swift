@@ -21,11 +21,9 @@ class PhotosRouterImpl: PhotosRouter {
     }
     
     func showPhoto(with urlString: String) {
+        var module = FullScreenPhotoAssembler().assemble()
+        module.presenter.urlString = urlString
+        pushModule(fromModule: vc, toModule: module.view)
         
-//        let albumView = PhotoAlbumListAssembler().assemble()
-//        
-//        let view = UINavigationController(rootViewController: albumView)
-//        
-//        presentController(fromModule: vc, to: view)
     }
 }

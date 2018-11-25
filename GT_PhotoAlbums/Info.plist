@@ -66,5 +66,7 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Please add photo access to choose car photos</string>
 </dict>
 </plist>

@@ -21,10 +21,17 @@ public class PhotoLocalRepository: PhotoRepository {
         let albums: [CDPhotoAlbum] = pManager.fetchAllRecords()
         
         let entities: [PhotoAlbumEntity]  = albums.map { (album: CDPhotoAlbum) in
-            let image = UIImage(contentsOfFile: album.filepath ?? "")
-            return PhotoAlbumEntity(id: album.id!, name: album.name!, coverImage: image ?? UIImage())
+            
+            var image: UIImage?
+            
+            if let filePath = album.filepath {
+                image = UIImage(contentsOfFile: filePath)
+            }
+            return PhotoAlbumEntity(id: album.id!, name: album.name!, coverImage: image ?? #imageLiteral(resourceName: "cat"))
         }
-        callback(PhotoRepositoryResult.success(entities))
+        callback(entities.isEmpty ?
+            PhotoRepositoryResult.failure(PhotoRepositoryError.noAlbums("no albums")) :
+            PhotoRepositoryResult.success(entities))
     }
     
     public func fetchPhotoWith(id: String, callback: @escaping (PhotoRepositoryResult<String>) -> Void) {

@@ -30,7 +30,8 @@ public class PhotoRepositoryImpl: PhotoRepository {
                     case let .success(albums):
                         self?.cashing(albums: albums)
                         callback(PhotoRepositoryResult.success(albums))
-                    case .failure: fatalError("")
+                    case .failure:
+                        self?.local.fetchAlbumList(callback: callback)
                     }
                 })
             case .failure:

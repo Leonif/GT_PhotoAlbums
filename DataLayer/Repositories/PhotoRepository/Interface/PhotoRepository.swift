@@ -10,6 +10,7 @@ import Foundation
 
 public enum PhotoRepositoryError: Error {
     case unknown(String)
+    case noAlbums(String)
     case facebookError(String)
 }
 

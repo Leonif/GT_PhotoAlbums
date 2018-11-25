@@ -11,8 +11,9 @@ import DataLayer
 class PhotoAlbumListMapper {
     
     func transform(input: PhotoAlbumEntity) -> PhotoAlbumViewItem? {
-        guard let id = input.id,
-        let name = input.name,
+        guard
+            let id = input.id,
+            let name = input.name,
             let link = input.link  else {
                 return nil
         }

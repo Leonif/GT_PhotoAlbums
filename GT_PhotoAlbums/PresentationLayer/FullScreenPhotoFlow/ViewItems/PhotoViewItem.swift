@@ -7,5 +7,6 @@
 //
 
 struct PhotoViewItem {
+    let id: String
     let urlString: String
 }

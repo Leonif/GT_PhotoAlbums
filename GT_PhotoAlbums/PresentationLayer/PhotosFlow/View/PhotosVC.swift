@@ -1,5 +1,5 @@
 //
-//  PhotoAlbumListVC.swift
+//  PhotoAlbumVC.swift
 //  GT_PhotoAlbums
 //
 //  Created by Leonid Nifantyev on 11/21/18.
@@ -8,21 +8,22 @@
 
 import UIKit
 
-protocol PhotoAlbumListView: BaseView {
-    func update(albums: [PhotoAlbumViewItem])
+protocol PhotosView: BaseView {
+    func update(title: String)
+    func update(photos: [PhotoViewItem])
 }
 
-class PhotoAlbumListVC: UIViewController, PhotoAlbumListView {
+class PhotosVC: UIViewController, PhotosView {
     
     @IBOutlet private var collectionView: UICollectionView!
     @IBOutlet private var layout: UICollectionViewFlowLayout!
     
-    var presenter: PhotoAlbumListPresenter!
-    var interactor: PhotoAlbumListInteractor!
-    var adapter: PhotoGridAdapter<PhotoAlbumCell, PhotoAlbumViewItem>!
+    var presenter: PhotosPresenter!
+    var interactor: PhotosInteractor!
+    var adapter: PhotoGridAdapter<PhotoCell, PhotoViewItem>!
     
     private func setupCollectionView() {
-        collectionView.register(PhotoAlbumCell.self)
+        collectionView.register(PhotoCell.self)
         collectionView.delegate = adapter
         collectionView.dataSource = adapter
         adapter.layout = layout
@@ -31,16 +32,14 @@ class PhotoAlbumListVC: UIViewController, PhotoAlbumListView {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.viewDidLoad()
-        
-        navigationItem.title = "Albums"
-        
         setupCollectionView()
         eventBinding()
     }
     
-    func update(albums: [PhotoAlbumViewItem]) {
-        adapter.datasource = albums
+    func update(title: String) {
+        navigationItem.title = "Album: \(title)"
     }
+    
     
     private func eventBinding() {
         adapter.eventHandler = { [weak self] event in
@@ -48,12 +47,16 @@ class PhotoAlbumListVC: UIViewController, PhotoAlbumListView {
             case .update:
                 self?.collectionView.reloadData()
             case let .selected(item):
-                self?.presenter.showPhotoAlbum(with: item)
+                self?.presenter.showPhoto(with: item.urlString)
             }
         }
     }
-
+    
+    func update(photos: [PhotoViewItem]) {
+        adapter.datasource = photos
+    }
+    
     func close() {
-        dismiss(animated: true)
+        navigationController?.popViewController(animated: true)
     }
 }

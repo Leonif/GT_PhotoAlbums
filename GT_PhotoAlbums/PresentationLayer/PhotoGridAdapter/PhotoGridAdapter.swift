@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 enum PhotoAdapterEvent<Item> {
     case update
     case selected(Item)
@@ -19,7 +18,7 @@ protocol Configurable {
     func config(item: Item)
 }
 
-class PhotoAdapter<Cell: UICollectionViewCell, Item>:
+class PhotoGridAdapter<Cell: UICollectionViewCell, Item>:
     NSObject, UICollectionViewDelegate, UICollectionViewDataSource
     where Cell: NibLoadableReusable & Configurable, Cell.Item == Item {
     

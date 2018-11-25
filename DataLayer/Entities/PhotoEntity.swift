@@ -7,11 +7,11 @@
 //
 
 public struct PhotoEntity: Parceable {
-    let id: String?
+    public let id: String?
     public var link: String?
     
     public init(object: JSONObject) {
         id = object["id"] as? String
-        link = nil
+        link = object["picture"] as? String
     }
 }

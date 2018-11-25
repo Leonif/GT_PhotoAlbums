@@ -32,9 +32,6 @@
 		79734A6121A9FE3900F49A45 /* FullScreenPhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79734A5521A9FE3900F49A45 /* FullScreenPhotoVC.swift */; };
 		79C98F5E21A92B1200B0342E /* DAOOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C98F5D21A92B1200B0342E /* DAOOperation.swift */; };
 		79C98F5F21A92B5100B0342E /* DAOOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C98F5D21A92B1200B0342E /* DAOOperation.swift */; };
-		79C98F6121A92B7000B0342E /* GraphRequestOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C98F6021A92B7000B0342E /* GraphRequestOperation.swift */; };
-		79C98F6521A92C9200B0342E /* UnboxAlbumListOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C98F6421A92C9200B0342E /* UnboxAlbumListOperation.swift */; };
-		79C98F6B21A94ACD00B0342E /* AddLinksToAlbumsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C98F6A21A94ACD00B0342E /* AddLinksToAlbumsOperation.swift */; };
 		79C98F6D21A95C4800B0342E /* PhotoAlbumListMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C98F6C21A95C4800B0342E /* PhotoAlbumListMapper.swift */; };
 		79C98F7021A960C000B0342E /* PhotoAlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C98F6E21A960C000B0342E /* PhotoAlbumCell.swift */; };
 		79C98F7121A960C000B0342E /* PhotoAlbumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79C98F6F21A960C000B0342E /* PhotoAlbumCell.xib */; };
@@ -120,9 +117,6 @@
 		79734A5421A9FE3900F49A45 /* FullScreenPhotoVC.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FullScreenPhotoVC.storyboard; sourceTree = "<group>"; };
 		79734A5521A9FE3900F49A45 /* FullScreenPhotoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullScreenPhotoVC.swift; sourceTree = "<group>"; };
 		79C98F5D21A92B1200B0342E /* DAOOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAOOperation.swift; sourceTree = "<group>"; };
-		79C98F6021A92B7000B0342E /* GraphRequestOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphRequestOperation.swift; sourceTree = "<group>"; };
-		79C98F6421A92C9200B0342E /* UnboxAlbumListOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnboxAlbumListOperation.swift; sourceTree = "<group>"; };
-		79C98F6A21A94ACD00B0342E /* AddLinksToAlbumsOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLinksToAlbumsOperation.swift; sourceTree = "<group>"; };
 		79C98F6C21A95C4800B0342E /* PhotoAlbumListMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbumListMapper.swift; sourceTree = "<group>"; };
 		79C98F6E21A960C000B0342E /* PhotoAlbumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbumCell.swift; sourceTree = "<group>"; };
 		79C98F6F21A960C000B0342E /* PhotoAlbumCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoAlbumCell.xib; sourceTree = "<group>"; };
@@ -217,7 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				79CF50D321A871870039096D /* LoginRepository.swift */,
-				79C98F6221A92C5F00B0342E /* PhotoAlbumRepository */,
+				79CF50E621A877D40039096D /* PhotoRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -353,25 +347,6 @@
 				79734A5521A9FE3900F49A45 /* FullScreenPhotoVC.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		79C98F6221A92C5F00B0342E /* PhotoAlbumRepository */ = {
-			isa = PBXGroup;
-			children = (
-				79C98F6321A92C6800B0342E /* Operations */,
-				79CF50E621A877D40039096D /* PhotoRepository.swift */,
-			);
-			path = PhotoAlbumRepository;
-			sourceTree = "<group>";
-		};
-		79C98F6321A92C6800B0342E /* Operations */ = {
-			isa = PBXGroup;
-			children = (
-				79C98F6021A92B7000B0342E /* GraphRequestOperation.swift */,
-				79C98F6A21A94ACD00B0342E /* AddLinksToAlbumsOperation.swift */,
-				79C98F6421A92C9200B0342E /* UnboxAlbumListOperation.swift */,
-			);
-			path = Operations;
 			sourceTree = "<group>";
 		};
 		79CF506021A5D1F30039096D = {
@@ -815,12 +790,9 @@
 			files = (
 				79C98F5F21A92B5100B0342E /* DAOOperation.swift in Sources */,
 				7913850C21A891B800225F0F /* PhotoRepository.swift in Sources */,
-				79C98F6521A92C9200B0342E /* UnboxAlbumListOperation.swift in Sources */,
 				7913850E21A892A000225F0F /* ResultType.swift in Sources */,
-				79C98F6B21A94ACD00B0342E /* AddLinksToAlbumsOperation.swift in Sources */,
 				7913851021A8968700225F0F /* PhotoAlbumEntity.swift in Sources */,
 				7913851421A8A97600225F0F /* Helpers.swift in Sources */,
-				79C98F6121A92B7000B0342E /* GraphRequestOperation.swift in Sources */,
 				7913850D21A891BF00225F0F /* LoginRepository.swift in Sources */,
 				7968849221A9CB1B002032F8 /* PhotoEntity.swift in Sources */,
 			);

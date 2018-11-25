@@ -23,5 +23,4 @@ class PhotoAlbumListMapper {
     func transform(input: [PhotoAlbumEntity]) -> [PhotoAlbumViewItem] {
         return input.compactMap { transform(input: $0) }
     }
-    
 }

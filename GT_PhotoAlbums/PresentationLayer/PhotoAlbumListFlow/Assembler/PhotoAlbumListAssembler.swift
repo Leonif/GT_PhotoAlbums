@@ -13,6 +13,9 @@ import DataLayer
 class PhotoAlbumListAssembler {
     
     func assemble() -> UIViewController {
+        
+        let persistanceManager = (UIApplication.shared.delegate as? AppDelegate)!.persistanceManager
+        
         let view = PhotoAlbumListVC.initFromStoryboard()
         let presenter = PhotoAlbumListPresenterImpl()
         let adapter = PhotoGridAdapter<PhotoAlbumCell, PhotoAlbumViewItem>(columns: 2)
@@ -20,7 +23,9 @@ class PhotoAlbumListAssembler {
         view.adapter = adapter
         presenter.view = view
         
-        let repository = PhotoCloudRepository()
+        let repository = PhotoRepositoryImpl(local: PhotoLocalRepository(),
+                                             cloud: PhotoCloudRepository(),
+                                             pManager: persistanceManager)
         let interactor = PhotoAlbumListInteractorImpl()
         interactor.presenter = presenter
         interactor.repository = repository

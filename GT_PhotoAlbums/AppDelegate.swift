@@ -8,11 +8,13 @@
 
 import UIKit
 import FacebookCore
+import DataLayer
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    let persistanceManager: PersistanceManager = PersistanceManagerFactory.createPersistanceManager()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         

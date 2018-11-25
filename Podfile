@@ -16,5 +16,6 @@ target 'DataLayer' do
   pod 'FacebookCore'
   pod 'FacebookLogin'
   pod 'FacebookShare'
+  pod 'MagicalRecord'
   
 end

@@ -10,14 +10,12 @@ import UIKit
 import DataLayer
 
 protocol FullScreenPhotoView: BaseView {
-    
     func update(urlString: String)
 }
 
 class FullScreenPhotoVC: UIViewController, FullScreenPhotoView {
-    var presenter: FullScreenPhotoPresenter!
     @IBOutlet private var imageView: UIImageView!
-    var repository = PhotoCloudRepository()
+    var presenter: FullScreenPhotoPresenter!
     
     override func viewDidLoad() {
         super.viewDidLoad()

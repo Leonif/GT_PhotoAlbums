@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 public class PhotoLocalRepository: PhotoRepository {
     
     private var pManager: PersistanceManager

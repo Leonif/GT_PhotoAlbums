@@ -122,7 +122,6 @@ public class PhotoRepositoryImpl: PhotoRepository {
                 return
             }
             DispatchQueue.main.async {
-                
                 let image = UIImage(data: data!)
                 callback(image)
             }}.resume()

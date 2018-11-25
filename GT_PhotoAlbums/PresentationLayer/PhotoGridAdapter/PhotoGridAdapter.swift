@@ -27,6 +27,8 @@ class PhotoGridAdapter<Cell: UICollectionViewCell, Item>:
     }
     
     private var columns: CGFloat
+        
+    var eventHandler: EventHandler<PhotoAdapterEvent<Item>>?
     
     var layout: UICollectionViewFlowLayout? {
         didSet {
@@ -44,15 +46,12 @@ class PhotoGridAdapter<Cell: UICollectionViewCell, Item>:
         super.init()
     }
     
-    var eventHandler: EventHandler<PhotoAdapterEvent<Item>>?
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return datasource.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: Cell = collectionView.dequeueReusableCell(for: indexPath)
-        
         let item = getItem(for: indexPath)
         cell.config(item: item)
         return cell

@@ -14,10 +14,12 @@ class PhotoAlbumListMapper {
         guard
             let id = input.id,
             let name = input.name,
-            let link = input.link  else {
+            let image = input.coverImage
+            else {
                 return nil
         }
-        return PhotoAlbumViewItem(id: id, name: name, urlString: link)
+
+        return PhotoAlbumViewItem(id: id, name: name, image: image)
     }
     
     func transform(input: [PhotoAlbumEntity]) -> [PhotoAlbumViewItem] {

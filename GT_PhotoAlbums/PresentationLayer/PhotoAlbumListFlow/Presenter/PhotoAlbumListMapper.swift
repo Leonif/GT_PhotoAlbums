@@ -13,13 +13,12 @@ class PhotoAlbumListMapper {
     func transform(input: PhotoAlbumEntity) -> PhotoAlbumViewItem? {
         guard
             let id = input.id,
-            let name = input.name,
-            let image = input.coverImage
+            let name = input.name
             else {
                 return nil
         }
 
-        return PhotoAlbumViewItem(id: id, name: name, image: image)
+        return PhotoAlbumViewItem(id: id, name: name, image: input.coverImage ?? #imageLiteral(resourceName: "cat"))
     }
     
     func transform(input: [PhotoAlbumEntity]) -> [PhotoAlbumViewItem] {

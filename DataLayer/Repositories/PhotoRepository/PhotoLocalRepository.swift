@@ -26,9 +26,7 @@ public class PhotoLocalRepository: PhotoRepository {
                 output.append(PhotoAlbumEntity(id: album.id!, name: album.name!, coverImage: image ?? #imageLiteral(resourceName: "cat")))
             }
         }
-        callback(albums.isEmpty ?
-            PhotoRepositoryResult.failure(PhotoRepositoryError.noAlbums("no albums")) :
-            PhotoRepositoryResult.success(output))
+        callback(PhotoRepositoryResult.success(output))
     }
     
     public func fetchPhotoWith(id: String, callback: @escaping (PhotoRepositoryResult<String>) -> Void) {

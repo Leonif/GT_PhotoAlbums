@@ -25,7 +25,7 @@ public class PhotoRepositoryImpl: PhotoRepository {
                 self?.fetchImages(for: entities, callback: { [weak self] (result) in
                     switch result {
                     case let .success(albums):
-                        self?.cashing(albums: albums)
+                      self?.cashing(albums: albums)
                         callback(PhotoRepositoryResult.success(albums))
                     case .failure:
                         self?.local.fetchAlbumList(callback: callback)

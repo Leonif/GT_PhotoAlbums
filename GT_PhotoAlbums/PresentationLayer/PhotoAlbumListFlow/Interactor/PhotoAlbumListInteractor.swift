@@ -21,6 +21,10 @@ class PhotoAlbumListInteractorImpl: PhotoAlbumListInteractor {
         repository.fetchAlbumList { (result) in
             switch result {
             case let .success(entities):
+              guard !entities.isEmpty else {
+                completion(PhotoRepositoryResult.failure(.noAlbums("no albums. Sorry 🤷‍♀️")))
+                return
+              }
                 completion(PhotoRepositoryResult.success(entities))
             case let .failure(error):
                 completion(PhotoRepositoryResult.failure(error))

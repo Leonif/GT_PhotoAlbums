@@ -26,13 +26,19 @@ class PhotoAlbumListPresenterImpl: PhotoAlbumListPresenter {
                 let viewItems = self.mapper.transform(input: albumEntities)
                 self.view.update(albums: viewItems)
             case let .failure(.facebookError(message)):
-                self.view.onError(with: message, completion: {
-                    self.view.close()
-                })
+                self.handleError(with: message)
+            case let .failure(.noAlbums(message)):
+                self.handleError(with: message)
             case let .failure(.unknown(message)):
-                self.view.onError(with: message)
+                self.handleError(with: message)
             }
         }
+    }
+    
+    private func handleError(with message: String) {
+        self.view.onError(with: message, completion: {
+            self.view.close()
+        })
     }
     
     func showPhotoAlbum(with album: PhotoAlbumViewItem) {

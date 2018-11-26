@@ -3,7 +3,33 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "PhotoLocalRepository.fetchAlbumList(callback:):PhotoLocalRepository.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in PhotoAlbumListInteractorImpl.fetchURLStrings(for:callback:):PhotoAlbumListInteractor.swift">
+      </ContextState>
+      <ContextState
+         contextName = "PhotoRepositoryImpl.saveAlbumList(albumList:):PhotoRepositoryImpl.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in PhotoLocalRepository.fetchAlbumList(callback:):PhotoLocalRepository.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "album.filepath">
+            </PersistentString>
+            <PersistentString
+               value = "UIImage(contentsOfFile: filePath)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in PhotoAlbumListCloudRepository.fetchPhotoWith(id:callback:):PhotoAlbumRepository.swift">
+      </ContextState>
+      <ContextState
          contextName = "PhotoAlbumListInteractorImpl.fetchURLStrings(for:callback:):PhotoAlbumListInteractor.swift">
+      </ContextState>
+      <ContextState
+         contextName = "PhotoRepositoryImpl.saveAlbum(album:completion:):PhotoRepositoryImpl.swift">
       </ContextState>
       <ContextState
          contextName = "closure #1 in PhotoAlbumListCloudRepository.fetchAlbumList(callback:):PhotoAlbumRepository.swift">
@@ -14,16 +40,25 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "closure #1 in closure #1 in PhotoRepositoryImpl.fetchAlbumList(callback:):PhotoRepositoryImpl.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in PersistanceManagerImpl.saveRecord&lt;A&gt;(saveCode:completion:):PersistanceManager.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #2 in PhotoRepositoryImpl.fetchImages(for:callback:):PhotoRepositoryImpl.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in PhotoAlbumListInteractorImpl.fetchAlbumList(completion:):PhotoAlbumListInteractor.swift">
+      </ContextState>
+      <ContextState
          contextName = "closure #2 in PhotoAlbumListInteractorImpl.fetchURLStrings(for:callback:):PhotoAlbumListInteractor.swift">
       </ContextState>
       <ContextState
          contextName = "PhotoAlbumCell.config(item:):PhotoAlbumCell.swift">
       </ContextState>
       <ContextState
-         contextName = "closure #1 in PhotoAlbumListCloudRepository.fetchPhotoWith(id:callback:):PhotoAlbumRepository.swift">
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in PhotoAlbumListInteractorImpl.fetchURLStrings(for:callback:):PhotoAlbumListInteractor.swift">
+         contextName = "closure #1 in PhotoRepositoryImpl.fetchAlbumList(callback:):PhotoRepositoryImpl.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

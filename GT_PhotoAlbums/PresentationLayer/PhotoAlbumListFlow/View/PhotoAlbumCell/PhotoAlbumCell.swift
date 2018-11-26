@@ -17,6 +17,6 @@ class PhotoAlbumCell: UICollectionViewCell, NibLoadableReusable, Configurable {
     
     func config(item: PhotoAlbumViewItem) {
         titleLabel.text = item.name
-        imageView.downloadImage(for: item.urlString!)
+        imageView.image = item.image
     }
 }

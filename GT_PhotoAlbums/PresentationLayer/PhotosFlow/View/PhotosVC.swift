@@ -19,7 +19,6 @@ class PhotosVC: UIViewController, PhotosView {
     @IBOutlet private var layout: UICollectionViewFlowLayout!
     
     var presenter: PhotosPresenter!
-    var interactor: PhotosInteractor!
     var adapter: PhotoGridAdapter<PhotoCell, PhotoViewItem>!
     
     private func setupCollectionView() {
